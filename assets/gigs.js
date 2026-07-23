@@ -7,7 +7,7 @@ window.GIGS = {
    "subtitle": "45 tracks from your Beatport crate, sequenced as a full-wheel harmonic walk with a double peak and a tempo break",
    "kicker": "DJ Set Sheet • Melodic House & Techno / Afterlife–Anjunadeep Crate",
    "venue": "",
-   "time": "0:00 – 0:47",
+   "time": "",
    "date": "Date TBA",
    "iso": "0000-00-00",
    "length": "~3 h 45 m",
@@ -30,6 +30,6 @@ window.GIGS = {
  ],
  "meta": {
   "count": 1,
-  "generated": "2026-07-23 04:45 UTC"
+  "generated": "2026-07-23 04:51 UTC"
  }
 };
