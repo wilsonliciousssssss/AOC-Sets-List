@@ -2,6 +2,56 @@
 window.GIGS = {
  "gigs": [
   {
+   "file": "sets/set-4.html",
+   "title": "Set 4",
+   "subtitle": "A ~1h45 melodic-techno journey rearranged into a double-peak energy cycle • Jul 02, 2026",
+   "kicker": "DJ Set Sheet • Melodic House & Techno",
+   "venue": "",
+   "time": "",
+   "date": "02 Jul 2026",
+   "iso": "2026-07-02",
+   "length": "~1 hr 45 min",
+   "coreKey": "5A",
+   "bpmStart": 120,
+   "bpmPeak": 146,
+   "bpmMin": 120,
+   "bpmMax": 146,
+   "tracks": 16,
+   "peaks": 2,
+   "vibes": [
+    "Melodic Techno",
+    "Emotional Melodies",
+    "Driving Groove",
+    "Deep Atmosphere",
+    "Peak Energy"
+   ]
+  },
+  {
+   "file": "sets/set-2.html",
+   "title": "Set 2",
+   "subtitle": "2nd Set + Act 2 Instrumental merged — a ~2h30 progressive-melodic journey with a double-peak arc • Apr 22, 2026",
+   "kicker": "DJ Set Sheet • Melodic / Progressive House",
+   "venue": "",
+   "time": "",
+   "date": "22 Apr 2026",
+   "iso": "2026-04-22",
+   "length": "~2 hr 30 min",
+   "coreKey": "6A",
+   "bpmStart": 118,
+   "bpmPeak": 128,
+   "bpmMin": 118,
+   "bpmMax": 128,
+   "tracks": 25,
+   "peaks": 2,
+   "vibes": [
+    "Melodic House",
+    "Progressive",
+    "Anjunadeep Feel",
+    "Vocal Emotion",
+    "Deep Groove"
+   ]
+  },
+  {
    "file": "sets/set-5.html",
    "title": "Set 5",
    "subtitle": "45 tracks from your Beatport crate, sequenced as a full-wheel harmonic walk with a double peak and a tempo break",
@@ -26,10 +76,35 @@ window.GIGS = {
     "Organic Vocal",
     "Peak-Time Rollers"
    ]
+  },
+  {
+   "file": "sets/set-1.html",
+   "title": "Set 1",
+   "subtitle": "A ~2-hour house-to-melodic journey rearranged into a double-peak energy cycle",
+   "kicker": "DJ Set Sheet • House / Melodic House & Techno",
+   "venue": "",
+   "time": "",
+   "date": "Date TBA",
+   "iso": "0000-00-00",
+   "length": "~2 hours",
+   "coreKey": "10A",
+   "bpmStart": 120,
+   "bpmPeak": 137,
+   "bpmMin": 120,
+   "bpmMax": 137,
+   "tracks": 20,
+   "peaks": 2,
+   "vibes": [
+    "Melodic House",
+    "Afro / Organic",
+    "Deep Techno",
+    "Vocal Emotion",
+    "Peak Groove"
+   ]
   }
  ],
  "meta": {
-  "count": 1,
-  "generated": "2026-07-23 04:51 UTC"
+  "count": 4,
+  "generated": "2026-07-23 07:19 UTC"
  }
 };
