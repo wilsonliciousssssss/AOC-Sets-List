@@ -76,12 +76,50 @@
   h1{font-family:var(--ao-font-display); font-weight:800; font-size:clamp(40px,9vw,92px); line-height:.92;
     margin:12px 0 8px; text-transform:uppercase; letter-spacing:-.01em}
   h1 .om{ text-shadow:-2px 0 var(--ao-glitch-cyan), 2px 0 var(--ao-glitch-magenta) }
+  .herosub{font-family:var(--ao-font-grotesk); font-weight:800; font-size:clamp(18px,3.4vw,28px);
+    text-transform:uppercase; letter-spacing:.04em; color:var(--ao-lime); margin:2px 0 16px;
+    text-shadow:-1.5px 0 var(--ao-glitch-cyan), 1.5px 0 var(--ao-glitch-magenta)}
   .lede{max-width:640px; color:var(--ao-fog); font-size:16px}
   .lede b{color:var(--ao-white); font-weight:500}
   .metarail{display:flex; flex-wrap:wrap; gap:8px 10px; margin-top:20px; font-family:var(--ao-font-mono);
     font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ao-fog)}
   .metarail span{border:1px solid var(--ao-line); padding:6px 10px}
   .metarail span b{color:var(--ao-lime); font-weight:700}
+
+  /* ---------- glitch fx ---------- */
+  .glitch{position:relative; display:inline-block; color:var(--ao-white)}
+  .glitch::before,.glitch::after{
+    content:attr(data-text); position:absolute; left:0; top:0; width:100%;
+    text-transform:inherit; letter-spacing:inherit; pointer-events:none; z-index:-1;
+  }
+  .glitch::before{ color:var(--ao-glitch-cyan); transform:translate(-2px,0); animation:glx-cyan 4s infinite linear }
+  .glitch::after { color:var(--ao-glitch-magenta); transform:translate(2px,0);  animation:glx-mag  4s infinite linear }
+  @keyframes glx-cyan{
+    0%,88%,100%{ transform:translate(-2px,0); clip-path:none }
+    89%{ transform:translate(-7px,-2px); clip-path:inset(8% 0 62% 0) }
+    91%{ transform:translate(5px,1px);   clip-path:inset(68% 0 6% 0) }
+    93%{ transform:translate(-4px,0);    clip-path:inset(34% 0 42% 0) }
+    95%{ transform:translate(3px,-1px);  clip-path:inset(52% 0 26% 0) }
+  }
+  @keyframes glx-mag{
+    0%,86%,100%{ transform:translate(2px,0); clip-path:none }
+    87%{ transform:translate(7px,1px);   clip-path:inset(18% 0 58% 0) }
+    90%{ transform:translate(-5px,-1px); clip-path:inset(60% 0 12% 0) }
+    92%{ transform:translate(4px,1px);   clip-path:inset(40% 0 36% 0) }
+    94%{ transform:translate(-3px,0);    clip-path:inset(24% 0 48% 0) }
+  }
+  /* faint scanline pass across the whole page */
+  body::after{
+    content:""; position:fixed; inset:0; z-index:40; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.05) 2px 3px);
+    opacity:.55; mix-blend-mode:multiply;
+    animation:scan 7s linear infinite;
+  }
+  @keyframes scan{ 0%{background-position:0 0} 100%{background-position:0 220px} }
+  @media (prefers-reduced-motion: reduce){
+    .glitch::before,.glitch::after{ animation:none }
+    body::after{ animation:none }
+  }
 
   /* ---------- controls ---------- */
   .controls{display:flex; flex-wrap:wrap; gap:12px; align-items:center; padding:22px 0 6px}
@@ -155,8 +193,9 @@
 
 <main class="wrap">
   <section class="hero">
-    <div class="eyebrow">Signal over noise</div>
-    <h1>Gig<br>Playlist<span class="om">s</span></h1>
+    <div class="eyebrow">ΛΩ · Signal over noise</div>
+    <h1 class="glitch" data-text="Alpha Omega Collective">Alpha Omega Collective</h1>
+    <div class="herosub" data-text="Gig Playlist">Gig Playlist</div>
     <p class="lede">Every set I play out, laid down as a <b>read-from-the-booth set sheet</b> —
       tracklist, keys, BPM and the energy journey. Verified on Beatport. Tap any gig to open the full sheet.</p>
     <div class="metarail" id="metarail"></div>
@@ -279,7 +318,8 @@
   }
 
   function render(){
-    let list = gigs.slice();
+    // always arrange by gig date — newest first, undated ("Date TBA", iso 0000-00-00) last
+    let list = gigs.slice().sort((a,b) => String(b.iso||'').localeCompare(String(a.iso||'')));
     if(activeVibe) list = list.filter(g => (g.vibes||[]).includes(activeVibe));
     if(query){
       list = list.filter(g => {
