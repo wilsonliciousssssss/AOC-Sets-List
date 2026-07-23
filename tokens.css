@@ -1,0 +1,76 @@
+/* ============================================================
+   ALPHA OMEGA COLLECTIVE — DESIGN TOKENS  (source of truth)
+   Rev 01 · 2026-07-16
+   Import into any asset:  <link rel="stylesheet" href="tokens.css">
+   Rule: use these variables, never raw hex. Corners are always 0.
+   ============================================================ */
+:root{
+  /* — Base surfaces — */
+  --ao-ink:      #0E0E10;   /* primary background (deep space)      */
+  --ao-ink-2:    #151519;   /* raised surface                       */
+  --ao-ink-3:    #1E1E24;   /* card / well                          */
+  --ao-space:    #08080C;   /* deepest (graph canvas)               */
+  --ao-paper:    #F4F4F0;   /* light background                     */
+  --ao-paper-2:  #EAEAE4;
+  --ao-white:    #F4F4F0;   /* text on ink (17.5:1)                 */
+  --ao-fog:      #8A8A98;   /* muted text on ink (5.7:1, AA)        */
+  --ao-fog-2:    #63636F;   /* hairline labels                      */
+  --ao-line:     #2A2A32;   /* 1px borders on ink                   */
+
+  /* — Channels (designed for INK backgrounds) —
+     hex            vs ink   on-fill text
+     lime  C6F000   14.6:1   ink
+     cobalt3E6BFF    4.4:1   white  (large/bold only)
+     orangeFF5A2C    6.2:1   ink
+     magntaFF2E9A    5.6:1   ink
+     teal  7EE8D0   13.2:1   ink                                    */
+  --ao-lime:     #C6F000;
+  --ao-cobalt:   #3E6BFF;   /* was #1D1DE6 (2.2:1 — failed); fixed  */
+  --ao-orange:   #FF5A2C;
+  --ao-magenta:  #FF2E9A;
+  --ao-teal:     #7EE8D0;
+
+  /* on-channel text (pair with the fill of the same name) */
+  --ao-on-lime:    var(--ao-ink);
+  --ao-on-cobalt:  var(--ao-white);
+  --ao-on-orange:  var(--ao-ink);
+  --ao-on-magenta: var(--ao-ink);
+  --ao-on-teal:    var(--ao-ink);
+
+  /* — Live channel — set per page/product; lime is the signature — */
+  --ao-ch:     var(--ao-lime);
+  --ao-on-ch:  var(--ao-ink);
+
+  /* — Glitch pair (chromatic split) — fixed, never recoloured — */
+  --ao-glitch-cyan:    #00DCFF;
+  --ao-glitch-magenta: #FF288F;
+  --ao-glitch-offset:  2px;      /* text-shadow / transform offset  */
+
+  /* — Type — */
+  --ao-font-display: 'Archivo', system-ui, sans-serif;   /* 800/700 */
+  --ao-font-grotesk: 'Space Grotesk', system-ui, sans-serif; /* 700/500 */
+  --ao-font-mono:    'Space Mono', ui-monospace, monospace;  /* labels, numerals, metadata */
+  --ao-font-body:    'Inter', system-ui, sans-serif;
+  --ao-w-reg: 400;  --ao-w-med: 500;  --ao-w-bold: 700;  --ao-w-black: 800;
+
+  /* type scale (px) */
+  --ao-fs-cap: 11px;   /* mono metadata           */
+  --ao-fs-sm:  13px;   --ao-fs-body: 16px;  --ao-fs-h3: 20px;
+  --ao-fs-h2:  clamp(26px,4vw,40px);  --ao-fs-h1: clamp(46px,9vw,104px);
+  --ao-track:  .16em;  /* uppercase mono tracking */
+
+  /* — Space (px) — */
+  --ao-s1: 4px; --ao-s2: 8px; --ao-s3: 12px; --ao-s4: 16px; --ao-s5: 24px; --ao-s6: 32px; --ao-s7: 48px;
+
+  /* — Shape (brand rule: sharp) — */
+  --ao-radius: 0;                 /* NEVER change. crisp corners.    */
+  --ao-border: 1px solid var(--ao-line);
+  --ao-border-ch: 1px solid var(--ao-ch);
+  --ao-frame: 2px dashed var(--ao-ch);   /* pixel/edge frame         */
+}
+
+/* Optional helpers (use if you like) */
+.ao-glitch{ text-shadow: calc(-1*var(--ao-glitch-offset)) 0 var(--ao-glitch-cyan),
+                          var(--ao-glitch-offset) 0 var(--ao-glitch-magenta); }
+.ao-mono{ font-family: var(--ao-font-mono); text-transform: uppercase; letter-spacing: var(--ao-track); }
+*[data-ao]{ border-radius: var(--ao-radius); }   /* reminder: 0 everywhere */
