@@ -314,10 +314,40 @@
     padding:6px 10px; font-family:'Space Mono',ui-monospace,monospace; font-size:12px; color:var(--ink)}
   .giginfo .gi i{color:var(--cyan); font-style:normal; font-size:10px; font-weight:700; letter-spacing:.12em}
   @media (max-width:599px){ .giginfo .gi{font-size:11.5px; padding:6px 9px} }
+
+  /* ===== Maestro V site header (shows on every set page) ===== */
+  .ao-siteheader{display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:10px 0 12px; margin-bottom:8px; border-bottom:1px solid var(--line)}
+  .ao-sh-brand{display:flex; align-items:center; gap:11px; text-decoration:none; min-width:0}
+  .ao-sh-logo{width:32px; height:32px; image-rendering:pixelated; border:1px solid var(--line); flex:none; display:block}
+  .ao-sh-txt{display:flex; flex-direction:column; gap:2px; min-width:0}
+  .ao-sh-name{font-family:'Archivo','Space Grotesk',system-ui,sans-serif; font-weight:800; font-size:16px;
+    letter-spacing:.05em; text-transform:uppercase; color:var(--ink); line-height:1;
+    text-shadow:-1.3px 0 #00DCFF, 1.3px 0 #FF288F}
+  .ao-sh-sub{font-family:'Space Mono',ui-monospace,monospace; font-size:9.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted)}
+  .ao-sh-sub b{color:var(--cyan); font-weight:700}
+  .ao-sh-back{font-family:'Space Mono',ui-monospace,monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--muted); text-decoration:none; border:1px solid var(--line);
+    padding:8px 12px; white-space:nowrap; flex:none}
+  .ao-sh-back:hover{border-color:var(--cyan); color:var(--cyan)}
+  @media (max-width:599px){ .ao-sh-sub{display:none} .ao-sh-name{font-size:14px} .ao-sh-back{padding:8px 10px} }
 </style>
 </head>
 <body>
 <div class="sheet">
+
+  <div class="ao-siteheader">
+    <a class="ao-sh-brand" href="../" title="Maestro V — all sets">
+      <img class="ao-sh-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABAklEQVR4nO2WsQ2DMBBFPyidTSylcoEYIBWFp2GSjMAkTEPBDCjFVZEsoE6KCAscDCgkoYh/hcDcvf9tTgScH+/YUeGezT2AB/AAHgAADnMPiWpzzVSB6Hr5HUBbaQAa7CbQnTS6MkOj4IRoK41W6tlmUyY+sgVrmgN4mojzZYC+IFMForMAJ+EsMCWmCkiZQMrEvOvS5gRs93bMPBUjCNvEC8CwYF9oWGRtCmu1+2c4Ahi6Z6oAUQ2iGk2cfy2FzQks7fHSGQmnFrqGjp3C1P25Q7hqDixNPNtxW2kQ1QZ+LoGuzMyW9jKTkKcC0momZeKEsNe+q8D/FXsAD+AB/h7gAeK7kIS6qyQ/AAAAAElFTkSuQmCC" alt="Maestro V">
+      <span class="ao-sh-txt">
+        <span class="ao-sh-name">Maestro&nbsp;V</span>
+        <span class="ao-sh-sub"><b>Alpha Omega Collective</b> &middot; Gig Sets</span>
+      </span>
+    </a>
+    <a class="ao-sh-back" href="../">&#8592; All sets</a>
+  </div>
+
 
   <div class="top">
     <div class="brand">
