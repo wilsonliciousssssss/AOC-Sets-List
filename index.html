@@ -99,34 +99,31 @@
   .fchip[aria-pressed="true"]{background:var(--ao-lime); color:var(--ao-ink); border-color:var(--ao-lime); font-weight:700}
   .fchip:focus-visible{outline:2px solid var(--ao-lime); outline-offset:2px}
 
-  /* ---------- gig grid ---------- */
-  .count{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ao-fog-2); padding:14px 0 6px}
-  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:16px; padding:6px 0 40px}
-  @media(max-width:520px){ .grid{grid-template-columns:1fr} }
+  /* ---------- gig grid — solid channel cards (one system, many channels) ---------- */
+  .count{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ao-fog-2); padding:16px 0 8px}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:18px; padding:6px 0 40px}
+  @media(max-width:560px){ .grid{grid-template-columns:1fr} }
 
-  .card{position:relative; display:flex; flex-direction:column; gap:12px;
-    background:var(--ao-ink-2); border:1px solid var(--ao-line); padding:18px 18px 16px;
-    transition:border-color .12s ease, transform .12s ease}
-  .card:hover{border-color:var(--ao-lime); transform:translateY(-2px)}
-  .card:focus-visible{outline:2px solid var(--ao-lime); outline-offset:2px}
-  .card .idx{position:absolute; top:14px; right:16px; font-family:var(--ao-font-mono); font-size:11px;
-    letter-spacing:.12em; color:var(--ao-fog-2)}
-  .card .date{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ao-lime)}
-  .card h2{font-family:var(--ao-font-grotesk); font-weight:700; font-size:26px; line-height:1.02; margin:2px 0 0; letter-spacing:-.01em}
-  .card .sub{color:var(--ao-fog); font-size:13.5px; line-height:1.4; min-height:1px}
-  .card .venue{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.06em; color:var(--ao-fog); text-transform:uppercase}
-  .statline{display:flex; flex-wrap:wrap; gap:6px; margin-top:2px}
-  .stat{font-family:var(--ao-font-mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
-    color:var(--ao-white); border:1px solid var(--ao-line); padding:5px 8px}
-  .stat b{color:var(--ao-lime); font-weight:700}
-  .vibes{display:flex; flex-wrap:wrap; gap:5px}
-  .vibe{font-family:var(--ao-font-mono); font-size:10px; letter-spacing:.05em; text-transform:uppercase; color:var(--ao-fog);
-    border:1px dashed var(--ao-line); padding:4px 7px}
+  .card{position:relative; display:flex; flex-direction:column; gap:9px;
+    background:var(--c,#C6F000); color:var(--on,#0E0E10); border:0; padding:22px 20px 18px;
+    text-decoration:none; overflow:hidden; transition:transform .12s ease, filter .12s ease}
+  .card:hover{transform:translateY(-3px); filter:brightness(1.05)}
+  .card:focus-visible{outline:3px solid var(--ao-white); outline-offset:2px}
+  .card .badge{align-self:flex-start; border:1px solid currentColor; font-family:var(--ao-font-mono);
+    font-size:10px; letter-spacing:.16em; text-transform:uppercase; padding:5px 9px; font-weight:700}
+  .card .idx{position:absolute; top:20px; right:20px; font-family:var(--ao-font-mono); font-size:12px; font-weight:700; opacity:.55}
+  .card .date{font-family:var(--ao-font-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:700; opacity:.85; margin-top:4px}
+  .card h2{font-family:var(--ao-font-display),var(--ao-font-grotesk); font-weight:800; font-size:clamp(24px,4.4vw,34px);
+    line-height:.98; text-transform:uppercase; letter-spacing:-.01em; margin:2px 0 0}
+  .card .sub{font-size:13px; line-height:1.35; opacity:.82}
+  .card .venue{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase; opacity:.82; font-weight:700}
+  .statcols{display:flex; flex-wrap:wrap; gap:14px 26px; margin-top:10px; border-top:1px solid currentColor; padding-top:13px}
+  .statcols .col .k{font-family:var(--ao-font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; opacity:.7}
+  .statcols .col .v{font-family:var(--ao-font-grotesk); font-weight:800; font-size:19px; margin-top:3px; line-height:1}
   .open{margin-top:auto; display:flex; align-items:center; justify-content:space-between;
-    border-top:1px solid var(--ao-line); padding-top:12px; margin-top:14px;
-    font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ao-fog)}
-  .card:hover .open{color:var(--ao-lime)}
-  .open .arrow{font-size:14px}
+    border-top:1px solid currentColor; padding-top:13px; margin-top:14px;
+    font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:700}
+  .open .arrow{font-size:15px}
 
   /* ---------- empty / error ---------- */
   .note{border:1px dashed var(--ao-line); padding:28px; text-align:center; color:var(--ao-fog); margin:8px 0 40px}
@@ -237,27 +234,47 @@
   });
   $('#q').addEventListener('input', e => { query = e.target.value.toLowerCase().trim(); render(); });
 
+  // ---- one system, many channels: a random theme colour per gig ----
+  const CHANNELS = [
+    {c:'#C6F000', on:'#0E0E10'},  // lime
+    {c:'#3E6BFF', on:'#F4F4F0'},  // cobalt (white text)
+    {c:'#FF2E9A', on:'#0E0E10'},  // magenta
+    {c:'#FF5A2C', on:'#0E0E10'},  // orange
+    {c:'#7EE8D0', on:'#0E0E10'}   // teal
+  ];
+  (function assignChannels(){
+    const order = CHANNELS.map((_,i)=>i);
+    for(let i=order.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); const t=order[i]; order[i]=order[j]; order[j]=t; }
+    let prev=-1;
+    gigs.forEach((g,i)=>{
+      let idx=order[i%order.length];
+      if(idx===prev) idx=order[(i+1)%order.length];   // never repeat an adjacent colour
+      g._ch=CHANNELS[idx]; prev=idx;
+    });
+  })();
+  const TODAY = new Date().toISOString().slice(0,10);
+
   // ---- card ----
   function card(g, i){
+    const ch = g._ch || CHANNELS[0];
     const bpm = (g.bpmMin!=null && g.bpmMax!=null)
       ? (g.bpmMin===g.bpmMax ? g.bpmMin : g.bpmMin+'–'+g.bpmMax) : '—';
-    const stats = [
-      g.tracks ? '<span class="stat"><b>'+g.tracks+'</b> Tracks</span>' : '',
-      '<span class="stat"><b>'+bpm+'</b> BPM</span>',
-      g.coreKey ? '<span class="stat">Key <b>'+esc(g.coreKey)+'</b></span>' : '',
-      g.length ? '<span class="stat">'+esc(g.length)+'</span>' : '',
-      g.peaks ? '<span class="stat"><b>'+g.peaks+'</b> Peak'+(g.peaks===1?'':'s')+'</span>' : ''
-    ].join('');
-    const vibes = (g.vibes||[]).map(v=>'<span class="vibe">'+esc(v)+'</span>').join('');
+    const upcoming = (g.iso==='0000-00-00') || (g.iso >= TODAY);
     const num = String(i+1).padStart(2,'0');
-    return '<a class="card" href="'+esc(g.file)+'" aria-label="Open set sheet: '+esc(g.title)+'">' +
+    const col = (k,v)=>'<div class="col"><div class="k">'+k+'</div><div class="v">'+v+'</div></div>';
+    return '<a class="card" style="--c:'+ch.c+';--on:'+ch.on+'" href="'+esc(g.file)+'" aria-label="Open set sheet: '+esc(g.title)+'">' +
       '<span class="idx">'+num+'</span>' +
+      '<span class="badge">'+(upcoming?'Upcoming':'Played')+'</span>' +
       '<span class="date">'+esc(g.date)+(g.time?' · '+esc(g.time):'')+'</span>' +
       '<h2>'+esc(g.title)+'</h2>' +
       (g.subtitle ? '<div class="sub">'+esc(g.subtitle)+'</div>' : '') +
       (g.venue ? '<div class="venue">'+esc(g.venue)+'</div>' : '') +
-      '<div class="statline">'+stats+'</div>' +
-      (vibes ? '<div class="vibes">'+vibes+'</div>' : '') +
+      '<div class="statcols">' +
+        col('Tracks', g.tracks||'—') +
+        col('BPM', bpm) +
+        col('Length', g.length?esc(g.length):'—') +
+        (g.coreKey ? col('Key', esc(g.coreKey)) : '') +
+      '</div>' +
       '<div class="open"><span>Open set sheet</span><span class="arrow">→</span></div>' +
     '</a>';
   }
