@@ -19,7 +19,7 @@ AO-GIG-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Fraunces:ital,opsz,wght@1,9,400;1,9,500&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E0E10'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='18' font-weight='700' text-anchor='middle' fill='%23FF2E9A'%3E%CE%91%CE%A9%3C/text%3E%3C/svg%3E">
+<link id="favicon" rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E0E10'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='16' font-weight='700' text-anchor='middle' fill='%23C6F000'%3E%CE%9B%CE%A9%3C/text%3E%3C/svg%3E">
 <style>
   :root{
     /* — Alpha Omega Collective tokens — */
@@ -51,8 +51,8 @@ AO-GIG-->
   /* ---------- masthead ---------- */
   .mast{display:flex; align-items:center; justify-content:space-between; gap:14px;
     padding:10px 0 16px; border-bottom:1px solid var(--line); flex-wrap:wrap}
-  .markwrap{display:flex; align-items:center; gap:11px; text-decoration:none}
-  .mk{font-family:var(--mono); font-weight:700; font-size:24px; color:var(--ink); line-height:1}
+  .markwrap{display:flex; align-items:center; gap:12px; text-decoration:none}
+  .mk{width:44px; height:44px; display:block; flex:none}
   .mklab{font-family:var(--mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); line-height:1.3}
   .back{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--muted); text-decoration:none; border:1px solid var(--line); padding:9px 14px; background:var(--panel)}
@@ -250,7 +250,7 @@ AO-GIG-->
 
   <div class="mast">
     <a class="markwrap" href="../index.html">
-      <span class="mk glitch">ΑΩ</span>
+      <canvas id="brandMark" class="mk" width="88" height="88" aria-label="Alpha Omega Collective"></canvas>
       <span class="mklab">Alpha Omega<br>Collective</span>
     </a>
     <a class="back" href="../index.html">← All gigs</a>
@@ -352,7 +352,7 @@ const SET = {
   kicker: "DJ Set Sheet • Melodic / Organic House & Techno",
   title: "Set 5",
   subtitle: "The Long Way Home — Beatport-verified play sequence",
-  gig: { venue:"Venue Private", city:"Kuala Lumpur", date:"2026-08-09", status:"upcoming" },
+  gig: { venue:"Venue TBC — edit me", city:"Kuala Lumpur", date:"2026-08-09", status:"upcoming" },
   totalLength: "~2.5 hours",
   coreKey: "5A",
   bpm: { start: 120, peak: 146, note: "Organic warm-up lifting to a rave-tempo first peak, then a re-build to the close." },
@@ -422,6 +422,25 @@ function opposite(c){ const p=parseCam(c); if(!p) return "—"; return `${((p.n+
 function phaseById(id){ return SET.phases.find(p=>p.id===id) || {color:"#888",name:"",icon:""}; }
 
 /* set the live channel from the gig's phase mix — use the peak/close colour as the page accent */
+function drawMark(cv, size, hex){
+  if(!cv || !cv.getContext) return;
+  const ctx=cv.getContext('2d'); if(!ctx) return;
+  cv.width=size; cv.height=size;
+  ctx.clearRect(0,0,size,size);
+  ctx.fillStyle="#0E0E10"; ctx.fillRect(0,0,size,size);
+  const lw=Math.max(1,Math.round(size/32));
+  ctx.strokeStyle=hex; ctx.lineWidth=lw;
+  if(ctx.setLineDash) ctx.setLineDash([Math.max(2,size/16),Math.max(2,size/16)]);
+  ctx.strokeRect(lw/2,lw/2,size-lw,size-lw);
+  if(ctx.setLineDash) ctx.setLineDash([]);
+  const f=Math.round(size*0.5);
+  ctx.font='700 '+f+'px "Space Mono","Courier New",monospace';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  const cx=size/2, cy=size/2+size*0.03, off=Math.max(1,size/32);
+  ctx.fillStyle="#00DCFF"; ctx.fillText('ΛΩ',cx-off,cy);
+  ctx.fillStyle="#FF288F"; ctx.fillText('ΛΩ',cx+off,cy);
+  ctx.fillStyle=hex;       ctx.fillText('ΛΩ',cx,cy);
+}
 (function(){
   const chMap={lime:"#C6F000",cobalt:"#3E6BFF",orange:"#FF5A2C",magenta:"#FF2E9A",teal:"#7EE8D0",violet:"#9B6BFF"};
   const m=/<!--AO-GIG\s*([\s\S]*?)\s*AO-GIG-->/.exec(document.documentElement.outerHTML);
@@ -429,6 +448,14 @@ function phaseById(id){ return SET.phases.find(p=>p.id===id) || {color:"#888",na
   if(m){ try{ const g=JSON.parse(m[1]); if(g.channel && chMap[g.channel]) ch=chMap[g.channel]; }catch(e){} }
   if(ch){ document.documentElement.style.setProperty('--ch', ch);
           document.documentElement.style.setProperty('--on-ch', ch==='#3E6BFF'?'#F4F4F0':'#0E0E10'); }
+  const hex = ch || getComputedStyle(document.documentElement).getPropertyValue('--ch').trim() || "#C6F000";
+  function paint(){
+    drawMark(document.getElementById('brandMark'), 88, hex);
+    try{ const link=document.getElementById('favicon'); const cv=document.createElement('canvas');
+      drawMark(cv,64,hex); if(link && cv.toDataURL) link.href=cv.toDataURL('image/png'); }catch(e){}
+  }
+  paint();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(paint);
 })();
 
 /* header + chips */
