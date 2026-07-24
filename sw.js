@@ -1,7 +1,7 @@
 /* Alpha Omega Collective — Gig Playlists · service worker.
    Network-first for HTML (so new gigs show up immediately once online),
    cache-first for static assets. Bump CACHE to force a refresh. */
-const CACHE = 'aoc-gigs-v2';
+const CACHE = 'aoc-gigs-v3';
 const CORE = [
   './', './index.html', './tokens.css', './app.webmanifest',
   './assets/gigs.js',
@@ -31,9 +31,11 @@ self.addEventListener('fetch', e => {
     req.url.endsWith('gigs.js');
 
   if (netFirst) {
-    // network-first: latest set sheets & index win when online
+    // network-first, bypassing the HTTP cache so a fresh gig index / sheet
+    // always wins the moment it's deployed (no 10-min GitHub Pages cache lag)
+    const fresh = new Request(req, { cache: 'no-store' });
     e.respondWith(
-      fetch(req).then(res => {
+      fetch(fresh).then(res => {
         const copy = res.clone();
         caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
         return res;
