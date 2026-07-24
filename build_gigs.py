@@ -45,8 +45,9 @@ MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
 
 
 def _str_field(src: str, key: str):
-    """Pull  key: "value"  out of the SET object (first match)."""
-    m = re.search(r'\b' + re.escape(key) + r'\s*:\s*"((?:[^"\\]|\\.)*)"', src)
+    """Pull  key: "value"  out of the SET object (first match).
+    Handles unquoted JS keys (title:) and JSON-quoted keys ("title":)."""
+    m = re.search(r'(?:"|\b)' + re.escape(key) + r'"?\s*:\s*"((?:[^"\\]|\\.)*)"', src)
     if not m:
         return None
     val = m.group(1)
@@ -57,7 +58,7 @@ def _str_field(src: str, key: str):
 
 
 def _num_field(src: str, key: str):
-    m = re.search(r'\b' + re.escape(key) + r'\s*:\s*(\d+)', src)
+    m = re.search(r'(?:"|\b)' + re.escape(key) + r'"?\s*:\s*(\d+)', src)
     return int(m.group(1)) if m else None
 
 
@@ -95,14 +96,14 @@ def _extract_set_block(txt: str) -> str:
 
 
 def _vibes(src: str):
-    m = re.search(r'\bvibes\s*:\s*\[([^\]]*)\]', src)
+    m = re.search(r'(?:"|\b)vibes"?\s*:\s*\[([^\]]*)\]', src)
     if not m:
         return []
     return [html.unescape(v.strip()) for v in re.findall(r'"((?:[^"\\]|\\.)*)"', m.group(1))]
 
 
 def _tracks_block(setblock: str) -> str:
-    m = re.search(r'\btracks\s*:\s*\[', setblock)
+    m = re.search(r'(?:"|\b)tracks"?\s*:\s*\[', setblock)
     if not m:
         return ""
     start = m.end() - 1
@@ -125,11 +126,11 @@ def parse_sheet(path: str) -> dict:
     tracks = _tracks_block(setblock)
     # gig-level fields live BEFORE the phases[] / tracks[] arrays; slice there so
     # keys like `time` (which also appears inside every phase) aren't mis-read.
-    head = re.split(r'\bphases\s*:', setblock, 1)[0]
+    head = re.split(r'(?:"|\b)phases"?\s*:', setblock, 1)[0]
 
-    n_tracks = len(re.findall(r'\{\s*n\s*:\s*\d+', tracks))
-    apexes   = len(re.findall(r'tag\s*:\s*"apex"', tracks))
-    bpms     = [int(x) for x in re.findall(r'\bbpm\s*:\s*(\d+)', tracks)]
+    n_tracks = len(re.findall(r'\{\s*"?n"?\s*:\s*\d+', tracks))
+    apexes   = len(re.findall(r'"?tag"?\s*:\s*"apex"', tracks))
+    bpms     = [int(x) for x in re.findall(r'(?:"|\b)bpm"?\s*:\s*(\d+)', tracks)]
 
     fname = os.path.basename(path)
     stem  = os.path.splitext(fname)[0]
