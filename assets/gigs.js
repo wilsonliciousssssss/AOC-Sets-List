@@ -2,6 +2,132 @@
 window.GIGS = {
  "gigs": [
   {
+   "file": "sets/sing-it-back.html",
+   "title": "SING IT BACK",
+   "subtitle": "BASE · Sat 08 Aug 2026 · A ~3.5-hour vocal & party-house journey — double-peak energy cycle · 40 tracks",
+   "kicker": "DJ Set Sheet • Vocal / Party House",
+   "venue": "BASE",
+   "time": "",
+   "date": "08 Aug 2026",
+   "iso": "2026-08-08",
+   "length": "~3.5 hours",
+   "coreKey": "",
+   "bpmStart": null,
+   "bpmPeak": null,
+   "bpmMin": null,
+   "bpmMax": null,
+   "tracks": 40,
+   "peaks": 2,
+   "vibes": [
+    "Party House",
+    "Big Vocals",
+    "Sing-Alongs",
+    "Feel-Good",
+    "Peak Hooks"
+   ]
+  },
+  {
+   "file": "sets/after-hours.html",
+   "title": "AFTER HOURS",
+   "subtitle": "BASE · Sun 02 Aug 2026 · A ~3.5-hour deep-house journey — smooth double-peak energy cycle · 40 tracks",
+   "kicker": "DJ Set Sheet • Deep House",
+   "venue": "BASE",
+   "time": "",
+   "date": "02 Aug 2026",
+   "iso": "2026-08-02",
+   "length": "~3.5 hours",
+   "coreKey": "",
+   "bpmStart": null,
+   "bpmPeak": null,
+   "bpmMin": null,
+   "bpmMax": null,
+   "tracks": 40,
+   "peaks": 2,
+   "vibes": [
+    "Deep House",
+    "Warm Chords",
+    "Late-Night Groove",
+    "Soulful Vocals",
+    "Hypnotic Roll"
+   ]
+  },
+  {
+   "file": "sets/groove-theory.html",
+   "title": "GROOVE THEORY",
+   "subtitle": "BASE · Fri 31 Jul 2026 · A ~3.5-hour groovy tech-house journey — double-peak energy cycle · 40 tracks",
+   "kicker": "DJ Set Sheet • Tech House",
+   "venue": "BASE",
+   "time": "",
+   "date": "31 Jul 2026",
+   "iso": "2026-07-31",
+   "length": "~3.5 hours",
+   "coreKey": "",
+   "bpmStart": null,
+   "bpmPeak": null,
+   "bpmMin": null,
+   "bpmMax": null,
+   "tracks": 40,
+   "peaks": 2,
+   "vibes": [
+    "Tech House",
+    "Rolling Groove",
+    "Bassline Drive",
+    "Peak-Time Energy",
+    "Vocal Hooks"
+   ]
+  },
+  {
+   "file": "sets/overdrive.html",
+   "title": "OVERDRIVE",
+   "subtitle": "BASE · Sun 26 Jul 2026 · A ~3.5-hour high-energy festival & mashup set — double-peak cycle · 40 tracks",
+   "kicker": "DJ Set Sheet • Electro / Bass / Festival",
+   "venue": "BASE",
+   "time": "",
+   "date": "26 Jul 2026",
+   "iso": "2026-07-26",
+   "length": "~3.5 hours",
+   "coreKey": "",
+   "bpmStart": null,
+   "bpmPeak": null,
+   "bpmMin": null,
+   "bpmMax": null,
+   "tracks": 40,
+   "peaks": 2,
+   "vibes": [
+    "Festival",
+    "Big Room",
+    "Bass House",
+    "Bootleg / Mashup",
+    "Hands-Up Peaks"
+   ]
+  },
+  {
+   "file": "sets/set-5.html",
+   "title": "Set 5",
+   "subtitle": "45 tracks from your Beatport crate, sequenced as a full-wheel harmonic walk with a double peak and a tempo break",
+   "kicker": "DJ Set Sheet • Melodic House & Techno / Afterlife–Anjunadeep Crate",
+   "venue": "BASE",
+   "time": "",
+   "date": "25 Jul 2026",
+   "iso": "2026-07-25",
+   "length": "~3 h 45 m",
+   "coreKey": "9A",
+   "bpmStart": 120,
+   "bpmPeak": 146,
+   "bpmMin": 87,
+   "bpmMax": 146,
+   "tracks": 45,
+   "peaks": 2,
+   "vibes": [
+    "Melodic House & Techno",
+    "Afterlife",
+    "Anjunadeep",
+    "Indie Dance",
+    "Organic Vocal",
+    "Peak-Time Rollers"
+   ]
+  },
+  {
    "file": "sets/set-4.html",
    "title": "Set 4",
    "subtitle": "A ~1h45 melodic-techno journey rearranged into a double-peak energy cycle • Jul 02, 2026",
@@ -24,6 +150,31 @@ window.GIGS = {
     "Driving Groove",
     "Deep Atmosphere",
     "Peak Energy"
+   ]
+  },
+  {
+   "file": "sets/set-1.html",
+   "title": "Set 1",
+   "subtitle": "A ~2-hour house-to-melodic journey rearranged into a double-peak energy cycle",
+   "kicker": "DJ Set Sheet • House / Melodic House & Techno",
+   "venue": "",
+   "time": "",
+   "date": "20 Jun 2026",
+   "iso": "2026-06-20",
+   "length": "~2 hours",
+   "coreKey": "10A",
+   "bpmStart": 120,
+   "bpmPeak": 137,
+   "bpmMin": 120,
+   "bpmMax": 137,
+   "tracks": 20,
+   "peaks": 2,
+   "vibes": [
+    "Melodic House",
+    "Afro / Organic",
+    "Deep Techno",
+    "Vocal Emotion",
+    "Peak Groove"
    ]
   },
   {
@@ -50,61 +201,10 @@ window.GIGS = {
     "Vocal Emotion",
     "Deep Groove"
    ]
-  },
-  {
-   "file": "sets/set-5.html",
-   "title": "Set 5",
-   "subtitle": "45 tracks from your Beatport crate, sequenced as a full-wheel harmonic walk with a double peak and a tempo break",
-   "kicker": "DJ Set Sheet • Melodic House & Techno / Afterlife–Anjunadeep Crate",
-   "venue": "",
-   "time": "",
-   "date": "Date TBA",
-   "iso": "0000-00-00",
-   "length": "~3 h 45 m",
-   "coreKey": "9A",
-   "bpmStart": 120,
-   "bpmPeak": 146,
-   "bpmMin": 87,
-   "bpmMax": 146,
-   "tracks": 45,
-   "peaks": 2,
-   "vibes": [
-    "Melodic House & Techno",
-    "Afterlife",
-    "Anjunadeep",
-    "Indie Dance",
-    "Organic Vocal",
-    "Peak-Time Rollers"
-   ]
-  },
-  {
-   "file": "sets/set-1.html",
-   "title": "Set 1",
-   "subtitle": "A ~2-hour house-to-melodic journey rearranged into a double-peak energy cycle",
-   "kicker": "DJ Set Sheet • House / Melodic House & Techno",
-   "venue": "",
-   "time": "",
-   "date": "Date TBA",
-   "iso": "0000-00-00",
-   "length": "~2 hours",
-   "coreKey": "10A",
-   "bpmStart": 120,
-   "bpmPeak": 137,
-   "bpmMin": 120,
-   "bpmMax": 137,
-   "tracks": 20,
-   "peaks": 2,
-   "vibes": [
-    "Melodic House",
-    "Afro / Organic",
-    "Deep Techno",
-    "Vocal Emotion",
-    "Peak Groove"
-   ]
   }
  ],
  "meta": {
-  "count": 4,
-  "generated": "2026-07-23 07:19 UTC"
+  "count": 8,
+  "generated": "2026-07-24 12:27 UTC"
  }
 };
