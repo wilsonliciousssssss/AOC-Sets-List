@@ -187,6 +187,23 @@
   .fchip[aria-pressed="true"]{background:var(--ao-lime); color:var(--ao-ink); border-color:var(--ao-lime); font-weight:700}
   .fchip:focus-visible{outline:2px solid var(--ao-lime); outline-offset:2px}
 
+  /* ---------- BPM ticker (second crawl, right → left) ---------- */
+  .bpmticker{overflow:hidden; margin:4px 0 2px; padding:9px 0; border-top:1px solid var(--ao-line); border-bottom:1px solid var(--ao-line);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+  .bpmticker .btrack{display:flex; width:max-content; flex:none; animation:bpmmarquee 55s linear infinite; will-change:transform}
+  .bpmticker:hover .btrack{animation-play-state:paused}
+  @keyframes bpmmarquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .bpmticker .bpmitem{display:inline-flex; align-items:center; gap:9px; padding:0 16px; white-space:nowrap;
+    font-family:var(--ao-font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ao-fog)}
+  .bpmticker .bpmitem:hover{color:var(--ao-white)}
+  .bpmticker .bpmitem .nm{color:var(--ao-fog-2)}
+  .bpmticker .bpmitem .bpm{color:var(--ao-lime); font-weight:700}
+  .bpmticker .bpmitem .sep{color:var(--ao-line)}
+  @media (prefers-reduced-motion:reduce){
+    .bpmticker{overflow:auto} .bpmticker .btrack{animation:none}
+  }
+
   /* ---------- gig grid — solid channel cards (one system, many channels) ---------- */
   .count{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ao-fog-2); padding:16px 0 8px}
   .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:18px; padding:6px 0 40px}
@@ -259,6 +276,7 @@
       </label>
       <div class="filters" id="filters" role="group" aria-label="Filter by vibe"></div>
     </div>
+    <div class="bpmticker" id="bpmticker" aria-label="BPM across the sets"></div>
     <div class="count" id="count"></div>
     <div class="grid" id="grid"></div>
     <div id="fallback"></div>
@@ -393,6 +411,24 @@
       '<div class="note"><b>Nothing matches that.</b><br>Clear the search or filter to see all sets.</div>';
   }
   render();
+
+  // ---- BPM ticker: each set's tempo range, low→high, links to the sheet ----
+  (function(){
+    const bt = document.getElementById('bpmticker'); if(!bt) return;
+    const items = gigs.slice().map(g => {
+      const has = (g.bpmMin!=null && g.bpmMax!=null);
+      const rng = has ? (g.bpmMin===g.bpmMax ? g.bpmMin+' BPM' : g.bpmMin+'–'+g.bpmMax+' BPM') : '— BPM';
+      return { g, rng, sort: has ? g.bpmMin : 9999 };
+    }).sort((a,b) => a.sort - b.sort);   // tempo sweep; sets without BPM last
+    if(!items.length) return;
+    const html = items.map(it =>
+      '<a class="bpmitem" href="'+esc(it.g.file)+'" aria-label="'+esc(it.g.title)+' — '+esc(it.rng)+'">' +
+        '<span class="nm">'+esc(it.g.title)+'</span>' +
+        '<span class="bpm">'+esc(it.rng)+'</span>' +
+        '<span class="sep">◆</span>' +
+      '</a>').join('');
+    bt.innerHTML = '<div class="btrack">'+html+html+'</div>';   // duplicate for a seamless loop
+  })();
 
   // ---- register service worker (offline / installable) ----
   if('serviceWorker' in navigator && location.protocol.startsWith('http')){
