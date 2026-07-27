@@ -201,10 +201,35 @@ window.GIGS = {
     "Vocal Emotion",
     "Deep Groove"
    ]
+  },
+  {
+   "file": "sets/east-of-the-signal.html",
+   "title": "East of the Signal",
+   "subtitle": "A four-hour sensual journey — organic twilight into deep progressive, an Asian-instrument centrepiece, a melodic crest, and a warm landing",
+   "kicker": "DJ Set Sheet • Organic × Melodic × Progressive — Sensual Asian Edition",
+   "venue": "BASE",
+   "time": "",
+   "date": "30 Aug 2025",
+   "iso": "2025-08-30",
+   "length": "~4 hours",
+   "coreKey": "9A",
+   "bpmStart": 110,
+   "bpmPeak": 124,
+   "bpmMin": 110,
+   "bpmMax": 124,
+   "tracks": 41,
+   "peaks": 1,
+   "vibes": [
+    "Organic House",
+    "Melodic House & Techno",
+    "Progressive House",
+    "Sensual & Hypnotic",
+    "Asian Instruments & Vocals"
+   ]
   }
  ],
  "meta": {
-  "count": 8,
-  "generated": "2026-07-24 12:27 UTC"
+  "count": 9,
+  "generated": "2026-07-27 10:20 UTC"
  }
 };
