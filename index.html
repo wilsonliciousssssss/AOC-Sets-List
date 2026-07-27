@@ -168,11 +168,12 @@
   .search input{flex:1; background:transparent; border:0; outline:0; color:var(--ao-white);
     font-family:var(--ao-font-body); font-size:15px; padding:12px 0}
   .search input::placeholder{color:var(--ao-fog-2)}
-  /* vibe filters as a moving news-ticker line (left → right), pause on hover/tap */
+  /* vibe filters as a moving news-ticker line (left → right) — matched to the BPM ticker below */
   .filters{flex:1 1 100%; min-width:0; display:flex; overflow:hidden; gap:0;
+    margin:2px 0 4px; padding:9px 0; border-top:1px solid var(--ao-line); border-bottom:1px solid var(--ao-line);
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
-  .filters .mtrack{display:flex; gap:8px; width:max-content; flex:none; padding-right:8px;
+  .filters .mtrack{display:flex; gap:0; width:max-content; flex:none;
     animation:filtermarquee 70s linear infinite; will-change:transform}
   /* pause/resume handled in JS so selecting or deselecting a vibe resumes the scroll */
   @keyframes filtermarquee{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
@@ -180,11 +181,11 @@
     .filters{flex-wrap:wrap; overflow:visible; -webkit-mask-image:none; mask-image:none}
     .filters .mtrack{animation:none; flex-wrap:wrap; width:auto}
   }
-  .fchip{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
-    white-space:nowrap; flex:none;
-    color:var(--ao-fog); background:var(--ao-ink-2); border:1px solid var(--ao-line); padding:9px 12px; cursor:pointer}
-  .fchip:hover{color:var(--ao-white); border-color:var(--ao-fog)}
-  .fchip[aria-pressed="true"]{background:var(--ao-lime); color:var(--ao-ink); border-color:var(--ao-lime); font-weight:700}
+  .fchip{font-family:var(--ao-font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    white-space:nowrap; flex:none; cursor:pointer;
+    color:var(--ao-lime); background:transparent; border:none; padding:2px 16px; font-weight:700}
+  .fchip:hover{color:var(--ao-white)}
+  .fchip[aria-pressed="true"]{background:var(--ao-lime); color:var(--ao-ink); font-weight:700}
   .fchip:focus-visible{outline:2px solid var(--ao-lime); outline-offset:2px}
 
   /* ---------- BPM ticker (second crawl, right → left) ---------- */
