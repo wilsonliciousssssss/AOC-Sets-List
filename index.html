@@ -174,7 +174,7 @@
     mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
   .filters .mtrack{display:flex; gap:8px; width:max-content; flex:none; padding-right:8px;
     animation:filtermarquee 70s linear infinite; will-change:transform}
-  .filters:hover .mtrack{animation-play-state:paused}
+  /* pause/resume handled in JS so selecting or deselecting a vibe resumes the scroll */
   @keyframes filtermarquee{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
   @media (prefers-reduced-motion:reduce){
     .filters{flex-wrap:wrap; overflow:visible; -webkit-mask-image:none; mask-image:none}
@@ -314,13 +314,12 @@
     '<button class="fchip" type="button" aria-pressed="false" data-vibe="'+esc(v)+'">'+esc(v)+'</button>').join('');
   // duplicate the chip run so the ticker loops seamlessly
   filtersEl.innerHTML = '<div class="mtrack">'+chipHtml+chipHtml+'</div>';
-  (function(){
-    const tr = filtersEl.querySelector('.mtrack'); if(!tr) return;
-    const pause = () => { tr.style.animationPlayState='paused'; };
-    const run   = () => { tr.style.animationPlayState=''; };
-    ['pointerenter','pointerdown'].forEach(ev => filtersEl.addEventListener(ev, pause));
-    ['pointerleave','pointerup','pointercancel'].forEach(ev => filtersEl.addEventListener(ev, run));
-  })();
+  const marqueeTrack = filtersEl.querySelector('.mtrack');
+  const tickerPause = () => { if(marqueeTrack) marqueeTrack.style.animationPlayState='paused'; };
+  const tickerRun   = () => { if(marqueeTrack) marqueeTrack.style.animationPlayState='running'; };
+  // pause on hover/press so a chip is easy to hit …
+  ['pointerenter','pointerdown'].forEach(ev => filtersEl.addEventListener(ev, tickerPause));
+  ['pointerleave','pointerup','pointercancel'].forEach(ev => filtersEl.addEventListener(ev, tickerRun));
   filtersEl.addEventListener('click', e => {
     const b = e.target.closest('.fchip'); if(!b) return;
     const v = b.dataset.vibe;
@@ -328,6 +327,7 @@
     filtersEl.querySelectorAll('.fchip').forEach(c =>
       c.setAttribute('aria-pressed', String(c.dataset.vibe===activeVibe)));
     render();
+    tickerRun();   // … but selecting OR deselecting a vibe resumes the scroll immediately
   });
   $('#q').addEventListener('input', e => { query = e.target.value.toLowerCase().trim(); render(); });
 
