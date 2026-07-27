@@ -208,6 +208,23 @@
     .bpmticker{overflow:auto} .bpmticker .btrack{animation:none}
   }
 
+  /* ---------- Genre ticker (third crawl, left → right) ---------- */
+  .genreticker{overflow:hidden; margin:2px 0 2px; padding:9px 0; border-bottom:1px solid var(--ao-line);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+  .genreticker .gtrack{display:flex; width:max-content; flex:none; animation:genremarquee 60s linear infinite; will-change:transform}
+  /* pause/resume handled in JS so it keeps scrolling after you interact */
+  @keyframes genremarquee{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+  .genreticker .genreitem{display:inline-flex; align-items:center; gap:9px; padding:0 16px; white-space:nowrap;
+    font-family:var(--ao-font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ao-fog)}
+  .genreticker .genreitem:hover{color:var(--ao-white)}
+  .genreticker .genreitem .nm{color:var(--ao-fog-2)}
+  .genreticker .genreitem .gen{color:var(--ao-lime); font-weight:700}
+  .genreticker .genreitem .sep{color:var(--ao-line)}
+  @media (prefers-reduced-motion:reduce){
+    .genreticker{overflow:auto} .genreticker .gtrack{animation:none}
+  }
+
   /* ---------- gig grid — solid channel cards (one system, many channels) ---------- */
   .count{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ao-fog-2); padding:16px 0 8px}
   .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:18px; padding:6px 0 40px}
@@ -281,6 +298,7 @@
       <div class="filters" id="filters" role="group" aria-label="Filter by vibe"></div>
     </div>
     <div class="bpmticker" id="bpmticker" aria-label="BPM across the sets"></div>
+    <div class="genreticker" id="genreticker" aria-label="Genres across the sets"></div>
     <div class="count" id="count"></div>
     <div class="grid" id="grid"></div>
     <div id="fallback"></div>
@@ -439,6 +457,34 @@
     ['pointerenter','pointerdown'].forEach(ev => bt.addEventListener(ev, bpmPause));
     ['pointerleave','pointerup','pointercancel'].forEach(ev => bt.addEventListener(ev, bpmRun));
     bt.addEventListener('click', bpmRun);
+  })();
+
+  // ---- Genre ticker: each set's genre (from its kicker), links to the sheet ----
+  (function(){
+    const gt = document.getElementById('genreticker'); if(!gt) return;
+    // genre = the text after "•" in the kicker, trimmed of any "—" editorial suffix; fall back to first vibe
+    const genreOf = g => {
+      let s = '';
+      if(g.kicker && g.kicker.indexOf('•') !== -1){ s = g.kicker.split('•').slice(1).join('•'); }
+      if(s){ s = s.split('—')[0].split('–')[0]; }
+      if(!s && g.vibes && g.vibes.length){ s = g.vibes[0]; }
+      return s.trim();
+    };
+    const items = gigs.slice().map(g => ({ g, gen: genreOf(g) })).filter(it => it.gen);
+    if(!items.length) return;
+    const html = items.map(it =>
+      '<a class="genreitem" href="'+esc(it.g.file)+'" aria-label="'+esc(it.g.title)+' — '+esc(it.gen)+'">' +
+        '<span class="nm">'+esc(it.g.title)+'</span>' +
+        '<span class="gen">'+esc(it.gen)+'</span>' +
+        '<span class="sep">◆</span>' +
+      '</a>').join('');
+    gt.innerHTML = '<div class="gtrack">'+html+html+'</div>';   // duplicate for a seamless loop
+    const gtr = gt.querySelector('.gtrack');
+    const genPause = () => { if(gtr) gtr.style.animationPlayState='paused'; };
+    const genRun   = () => { if(gtr) gtr.style.animationPlayState='running'; };
+    ['pointerenter','pointerdown'].forEach(ev => gt.addEventListener(ev, genPause));
+    ['pointerleave','pointerup','pointercancel'].forEach(ev => gt.addEventListener(ev, genRun));
+    gt.addEventListener('click', genRun);
   })();
 
   // ---- hero text-scramble (decode flicker every 20s) ----
