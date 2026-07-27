@@ -168,8 +168,20 @@
   .search input{flex:1; background:transparent; border:0; outline:0; color:var(--ao-white);
     font-family:var(--ao-font-body); font-size:15px; padding:12px 0}
   .search input::placeholder{color:var(--ao-fog-2)}
-  .filters{display:flex; flex-wrap:wrap; gap:8px}
+  /* vibe filters as a moving news-ticker line (left → right), pause on hover/tap */
+  .filters{flex:1 1 100%; min-width:0; display:flex; overflow:hidden; gap:0;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+  .filters .mtrack{display:flex; gap:8px; width:max-content; flex:none; padding-right:8px;
+    animation:filtermarquee 70s linear infinite; will-change:transform}
+  .filters:hover .mtrack{animation-play-state:paused}
+  @keyframes filtermarquee{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
+  @media (prefers-reduced-motion:reduce){
+    .filters{flex-wrap:wrap; overflow:visible; -webkit-mask-image:none; mask-image:none}
+    .filters .mtrack{animation:none; flex-wrap:wrap; width:auto}
+  }
   .fchip{font-family:var(--ao-font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    white-space:nowrap; flex:none;
     color:var(--ao-fog); background:var(--ao-ink-2); border:1px solid var(--ao-line); padding:9px 12px; cursor:pointer}
   .fchip:hover{color:var(--ao-white); border-color:var(--ao-fog)}
   .fchip[aria-pressed="true"]{background:var(--ao-lime); color:var(--ao-ink); border-color:var(--ao-lime); font-weight:700}
@@ -298,8 +310,17 @@
   let activeVibe = null, query = "";
 
   const filtersEl = $('#filters');
-  filtersEl.innerHTML = vibes.map(v =>
+  const chipHtml = vibes.map(v =>
     '<button class="fchip" type="button" aria-pressed="false" data-vibe="'+esc(v)+'">'+esc(v)+'</button>').join('');
+  // duplicate the chip run so the ticker loops seamlessly
+  filtersEl.innerHTML = '<div class="mtrack">'+chipHtml+chipHtml+'</div>';
+  (function(){
+    const tr = filtersEl.querySelector('.mtrack'); if(!tr) return;
+    const pause = () => { tr.style.animationPlayState='paused'; };
+    const run   = () => { tr.style.animationPlayState=''; };
+    ['pointerenter','pointerdown'].forEach(ev => filtersEl.addEventListener(ev, pause));
+    ['pointerleave','pointerup','pointercancel'].forEach(ev => filtersEl.addEventListener(ev, run));
+  })();
   filtersEl.addEventListener('click', e => {
     const b = e.target.closest('.fchip'); if(!b) return;
     const v = b.dataset.vibe;
