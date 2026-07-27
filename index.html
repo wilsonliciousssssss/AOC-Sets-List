@@ -446,6 +446,9 @@
     const finalText = el.getAttribute('data-text') || el.textContent;
     const glyphs = '!<>-_\\/[]{}—=+*^?#ΛΩ0123456789';
     let raf = null, running = false;
+    // reserve the headline's natural height so a width change never nudges the page
+    const lockH = () => { el.style.minHeight = el.offsetHeight + 'px'; };
+    lockH(); window.addEventListener('resize', () => { el.style.minHeight = ''; lockH(); });
     function scramble(){
       if(running) return; running = true;
       const chars = finalText.split('');
@@ -489,6 +492,10 @@
     let running = false;
     function scramble(){
       if(running) return; running = true;
+      // freeze the paragraph's box at its true-text height so a wider scrambled wrap can't reflow the page
+      const h = el.getBoundingClientRect().height;
+      el.style.height = h + 'px'; el.style.overflow = 'hidden';
+      const release = () => { el.style.height = ''; el.style.overflow = ''; };
       let gi = 0;   // global non-space index → left-to-right decode wave across the whole paragraph
       const plan = nodes.map(n => ({
         node: n.node, text: n.text,
@@ -515,7 +522,7 @@
         }
         frame++;
         if(done < total){ requestAnimationFrame(step); }
-        else { for(const p of plan) p.node.nodeValue = p.text; running = false; }
+        else { for(const p of plan) p.node.nodeValue = p.text; release(); running = false; }
       };
       step();
     }
