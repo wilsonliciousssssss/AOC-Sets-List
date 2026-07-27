@@ -153,6 +153,31 @@ window.GIGS = {
    ]
   },
   {
+   "file": "sets/set-2.html",
+   "title": "Set 2",
+   "subtitle": "2nd Set + Act 2 Instrumental merged — a ~2h30 progressive-melodic journey with a double-peak arc • Jun 22, 2026",
+   "kicker": "DJ Set Sheet • Melodic / Progressive House",
+   "venue": "",
+   "time": "",
+   "date": "22 Jun 2026",
+   "iso": "2026-06-22",
+   "length": "~2 hr 30 min",
+   "coreKey": "6A",
+   "bpmStart": 118,
+   "bpmPeak": 128,
+   "bpmMin": 118,
+   "bpmMax": 128,
+   "tracks": 25,
+   "peaks": 2,
+   "vibes": [
+    "Melodic House",
+    "Progressive",
+    "Anjunadeep Feel",
+    "Vocal Emotion",
+    "Deep Groove"
+   ]
+  },
+  {
    "file": "sets/set-1.html",
    "title": "Set 1",
    "subtitle": "A ~2-hour house-to-melodic journey rearranged into a double-peak energy cycle",
@@ -175,31 +200,6 @@ window.GIGS = {
     "Deep Techno",
     "Vocal Emotion",
     "Peak Groove"
-   ]
-  },
-  {
-   "file": "sets/set-2.html",
-   "title": "Set 2",
-   "subtitle": "2nd Set + Act 2 Instrumental merged — a ~2h30 progressive-melodic journey with a double-peak arc • Apr 22, 2026",
-   "kicker": "DJ Set Sheet • Melodic / Progressive House",
-   "venue": "",
-   "time": "",
-   "date": "22 Apr 2026",
-   "iso": "2026-04-22",
-   "length": "~2 hr 30 min",
-   "coreKey": "6A",
-   "bpmStart": 118,
-   "bpmPeak": 128,
-   "bpmMin": 118,
-   "bpmMax": 128,
-   "tracks": 25,
-   "peaks": 2,
-   "vibes": [
-    "Melodic House",
-    "Progressive",
-    "Anjunadeep Feel",
-    "Vocal Emotion",
-    "Deep Groove"
    ]
   },
   {
@@ -230,6 +230,6 @@ window.GIGS = {
  ],
  "meta": {
   "count": 9,
-  "generated": "2026-07-27 10:20 UTC"
+  "generated": "2026-07-27 13:40 UTC"
  }
 };
