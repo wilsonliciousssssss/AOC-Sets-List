@@ -438,6 +438,39 @@
     bt.addEventListener('click', bpmRun);
   })();
 
+  // ---- hero text-scramble (decode flicker every 20s) ----
+  (function(){
+    const el = document.querySelector('.hero h1.glitch');
+    if(!el) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const finalText = el.getAttribute('data-text') || el.textContent;
+    const glyphs = '!<>-_\\/[]{}—=+*^?#ΛΩ0123456789';
+    let raf = null, running = false;
+    function scramble(){
+      if(running) return; running = true;
+      const chars = finalText.split('');
+      // each character locks in at a staggered frame
+      const queue = chars.map((c, i) => ({
+        c, start: Math.floor(i * 2 + Math.random()*8), end: Math.floor(i * 2 + 12 + Math.random()*18)
+      }));
+      let frame = 0;
+      const step = () => {
+        let out = '', done = 0;
+        for(const q of queue){
+          if(frame >= q.end){ out += q.c; done++; }
+          else if(frame >= q.start){ out += glyphs[Math.floor(Math.random()*glyphs.length)]; }
+          else { out += q.c; }  // hold true text before its scramble window opens
+        }
+        el.textContent = out; el.setAttribute('data-text', out);   // keep the glitch ghost-layers in sync
+        frame++;
+        if(done < queue.length){ raf = requestAnimationFrame(step); }
+        else { el.textContent = finalText; el.setAttribute('data-text', finalText); running = false; }
+      };
+      step();
+    }
+    setInterval(scramble, 20000);   // fire every 20 seconds
+  })();
+
   // ---- register service worker (offline / installable) ----
   if('serviceWorker' in navigator && location.protocol.startsWith('http')){
     window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
