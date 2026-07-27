@@ -192,7 +192,7 @@
     -webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);
     mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
   .bpmticker .btrack{display:flex; width:max-content; flex:none; animation:bpmmarquee 55s linear infinite; will-change:transform}
-  .bpmticker:hover .btrack{animation-play-state:paused}
+  /* pause/resume handled in JS so it keeps scrolling after you interact */
   @keyframes bpmmarquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
   .bpmticker .bpmitem{display:inline-flex; align-items:center; gap:9px; padding:0 16px; white-space:nowrap;
     font-family:var(--ao-font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ao-fog)}
@@ -428,6 +428,13 @@
         '<span class="sep">◆</span>' +
       '</a>').join('');
     bt.innerHTML = '<div class="btrack">'+html+html+'</div>';   // duplicate for a seamless loop
+    // pause on hover/press for easy tapping, but resume the moment you interact
+    const btr = bt.querySelector('.btrack');
+    const bpmPause = () => { if(btr) btr.style.animationPlayState='paused'; };
+    const bpmRun   = () => { if(btr) btr.style.animationPlayState='running'; };
+    ['pointerenter','pointerdown'].forEach(ev => bt.addEventListener(ev, bpmPause));
+    ['pointerleave','pointerup','pointercancel'].forEach(ev => bt.addEventListener(ev, bpmRun));
+    bt.addEventListener('click', bpmRun);
   })();
 
   // ---- register service worker (offline / installable) ----
