@@ -471,6 +471,57 @@
     setInterval(scramble, 20000);   // fire every 20 seconds
   })();
 
+  // ---- lede paragraph text-scramble (decode wave every 10s, preserves the <b>) ----
+  (function(){
+    const el = document.querySelector('.hero .lede');
+    if(!el) return;
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const glyphs = '!<>-_\\/[]{}—=+*^?#ΛΩ0123456789';
+    // capture every text node (keeps the <b> element intact while its text scrambles)
+    const nodes = [];
+    (function walk(n){
+      n.childNodes.forEach(c => {
+        if(c.nodeType === 3){ if(c.nodeValue.replace(/\s/g,'').length) nodes.push({ node:c, text:c.nodeValue }); }
+        else if(c.nodeType === 1){ walk(c); }
+      });
+    })(el);
+    if(!nodes.length) return;
+    let running = false;
+    function scramble(){
+      if(running) return; running = true;
+      let gi = 0;   // global non-space index → left-to-right decode wave across the whole paragraph
+      const plan = nodes.map(n => ({
+        node: n.node, text: n.text,
+        meta: n.text.split('').map(ch => {
+          if(ch.trim() === '') return { ch, skip:true };
+          const start = gi * 0.55 + Math.random()*5;
+          const m = { ch, start, end: start + 7 + Math.random()*9, skip:false };
+          gi++; return m;
+        })
+      }));
+      let frame = 0;
+      const step = () => {
+        let done = 0, total = 0;
+        for(const p of plan){
+          let out = '';
+          for(const m of p.meta){
+            if(m.skip){ out += m.ch; continue; }
+            total++;
+            if(frame >= m.end){ out += m.ch; done++; }
+            else if(frame >= m.start){ out += glyphs[Math.floor(Math.random()*glyphs.length)]; }
+            else out += m.ch;
+          }
+          p.node.nodeValue = out;
+        }
+        frame++;
+        if(done < total){ requestAnimationFrame(step); }
+        else { for(const p of plan) p.node.nodeValue = p.text; running = false; }
+      };
+      step();
+    }
+    setInterval(scramble, 10000);   // fire every 10 seconds
+  })();
+
   // ---- register service worker (offline / installable) ----
   if('serviceWorker' in navigator && location.protocol.startsWith('http')){
     window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
