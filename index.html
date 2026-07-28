@@ -180,10 +180,6 @@
     animation:filtermarquee 70s linear infinite; will-change:transform}
   /* pause/resume handled in JS so selecting or deselecting a vibe resumes the scroll */
   @keyframes filtermarquee{ from{transform:translateX(-50%)} to{transform:translateX(0)} }
-  @media (prefers-reduced-motion:reduce){
-    .filters{flex-wrap:wrap; overflow:visible; -webkit-mask-image:none; mask-image:none}
-    .filters .mtrack{animation:none; flex-wrap:wrap; width:auto}
-  }
   .fchip{font-family:var(--ao-font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
     white-space:nowrap; flex:none; cursor:pointer;
     color:var(--ao-lime); background:transparent; border:none; padding:2px 16px; font-weight:700}
@@ -204,9 +200,6 @@
   .bpmticker .bpmitem .nm{color:var(--ao-fog-2)}
   .bpmticker .bpmitem .bpm{color:var(--ao-lime); font-weight:700}
   .bpmticker .bpmitem .sep{color:var(--ao-line)}
-  @media (prefers-reduced-motion:reduce){
-    .bpmticker{overflow:auto} .bpmticker .btrack{animation:none}
-  }
 
   /* ---------- Genre ticker (third crawl, left → right) ---------- */
   .genreticker{overflow:hidden; margin:2px 0 2px; padding:9px 0; border-bottom:1px solid var(--ao-line);
@@ -221,8 +214,14 @@
   .genreticker .genreitem .nm{color:var(--ao-fog-2)}
   .genreticker .genreitem .gen{color:var(--ao-lime); font-weight:700}
   .genreticker .genreitem .sep{color:var(--ao-line)}
+
+  /* Tickers scroll consistently on every device (desktop = mobile/tablet).
+     Reduced-motion keeps the same layout — no scrollbars, no wrapping — just a
+     calmer crawl — so the experience never diverges by screen or OS setting. */
   @media (prefers-reduced-motion:reduce){
-    .genreticker{overflow:auto} .genreticker .gtrack{animation:none}
+    .filters .mtrack{animation-duration:120s}
+    .bpmticker .btrack{animation-duration:95s}
+    .genreticker .gtrack{animation-duration:100s}
   }
 
   /* ---------- gig grid — solid channel cards (one system, many channels) ---------- */
