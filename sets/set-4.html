@@ -405,11 +405,6 @@
           <div class="tips" id="transtips"></div>
         </div>
       </div>
-
-      <div class="card" id="sec-pools">
-        <h3>Pool Availability</h3>
-        <div class="pools" id="pools"></div>
-      </div>
     </div>
   </div>
 
@@ -448,7 +443,7 @@ const SET = {
   coreKey: "5A",
   bpm: { start: 120, peak: 146, note: "Rolls up from 120 through two peaks; KI/KI at 146 is the rave apex, then a controlled release." },
   vibes: ["Melodic Techno","Emotional Melodies","Driving Groove","Deep Atmosphere","Peak Energy"],
-  pools: [ { name:"Beatport", available:16, total:16, color:"var(--cyan)" } ],
+  pools: [],
   djTips: [
     "<b>Warm-Up:</b> Long intros — hold the Notre Dame / F-minor groove low.",
     "<b>Peak 1:</b> Jupiter is the first crest — build Alone→Horizon→Eternity into it.",
@@ -686,7 +681,7 @@ document.getElementById('transtips').innerHTML = [
 ].map((t,i)=>`<div class="t"><span class="n">${i+1}.</span><span>${t}</span></div>`).join('');
 
 /* pools */
-document.getElementById('pools').innerHTML = SET.pools.map(p=>{
+var __pl=document.getElementById('pools'); if(__pl) __pl.innerHTML = SET.pools.map(p=>{
   const pct=Math.round(p.available/p.total*100);
   return `<div class="pool"><div style="flex:1">
     <div style="display:flex;justify-content:space-between"><span class="nm">${p.name}</span><span class="av" style="color:${p.color}">${p.available} / ${p.total}</span></div>

@@ -405,11 +405,6 @@
           <div class="tips" id="transtips"></div>
         </div>
       </div>
-
-      <div class="card" id="sec-pools">
-        <h3>Pool Availability</h3>
-        <div class="pools" id="pools"></div>
-      </div>
     </div>
   </div>
 
@@ -448,10 +443,7 @@ const SET = {
   coreKey: "9A",                         // Camelot the deep sections centre on
   bpm: { start: 110, peak: 124, note: "A slow, sensual climb — 110 BPM organic twilight up to a 124 BPM melodic crest, never breaking into hard peak-time. Warm, hypnotic landing." },
   vibes: ["Organic House","Melodic House & Techno","Progressive House","Sensual & Hypnotic","Asian Instruments & Vocals"],
-  pools: [
-    { name:"Beatport",    available:41, total:41, color:"var(--cyan)" },
-    { name:"BPM Supreme", available:22, total:41, color:"var(--red)" }
-  ],
+  pools: [],
   djTips: [
     "<b>Twilight (Organic):</b> Long, patient blends at 110–120. Let the ethnic textures and duduk breathe — this is mood-setting, not mixing gymnastics.",
     "<b>Deep Current (Progressive):</b> Ride the 9A/9B pocket — six deep rollers that beat-match almost seamlessly. Keep it hypnotic and rolling.",
@@ -723,7 +715,7 @@ document.getElementById('transtips').innerHTML = [
 ].map((t,i)=>`<div class="t"><span class="n">${i+1}.</span><span>${t}</span></div>`).join('');
 
 /* pools */
-document.getElementById('pools').innerHTML = SET.pools.map(p=>{
+var __pl=document.getElementById('pools'); if(__pl) __pl.innerHTML = SET.pools.map(p=>{
   const pct=Math.round(p.available/p.total*100);
   return `<div class="pool"><div style="flex:1">
     <div style="display:flex;justify-content:space-between"><span class="nm">${p.name}</span><span class="av" style="color:${p.color}">${p.available} / ${p.total}</span></div>

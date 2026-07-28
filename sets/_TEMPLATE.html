@@ -312,11 +312,6 @@ AO-GIG-->
           <div class="tips" id="transtips"></div>
         </div>
       </div>
-
-      <div class="card" id="sec-pools">
-        <h3>Pool Availability</h3>
-        <div class="pools" id="pools"></div>
-      </div>
     </div>
   </div>
 
@@ -357,10 +352,7 @@ const SET = {
   coreKey: "5A",
   bpm: { start: 120, peak: 146, note: "Organic warm-up lifting to a rave-tempo first peak, then a re-build to the close." },
   vibes: ["Melodic Techno","Organic Groove","Emotional Melodies","Deep Atmosphere","Driving Rhythms"],
-  pools: [
-    { name:"Beatport (verified)", available:25, total:25, color:"var(--teal)" },
-    { name:"Sheet tracks that exist", available:25, total:37, color:"var(--lime)" }
-  ],
+  pools: [],
   djTips: [
     "<b>Warm-Up (1-6):</b> organic and patient — let the groove build.",
     "<b>First Build (7-12):</b> lock the kick; lift with Return to Oz & Upperground.",
@@ -654,7 +646,7 @@ document.getElementById('transtips').innerHTML = [
 ].map((t,i)=>`<div class="t"><span class="n">${i+1}.</span><span>${t}</span></div>`).join('');
 
 /* pools */
-document.getElementById('pools').innerHTML = SET.pools.map(p=>{
+var __pl=document.getElementById('pools'); if(__pl) __pl.innerHTML = SET.pools.map(p=>{
   const pct=Math.round(p.available/p.total*100);
   return `<div class="pool"><div style="flex:1">
     <div style="display:flex;justify-content:space-between"><span class="nm">${p.name}</span><span class="av" style="color:${p.color}">${p.available} / ${p.total}</span></div>

@@ -405,11 +405,6 @@
           <div class="tips" id="transtips"></div>
         </div>
       </div>
-
-      <div class="card" id="sec-pools">
-        <h3>Pool Availability</h3>
-        <div class="pools" id="pools"></div>
-      </div>
     </div>
   </div>
 
@@ -448,7 +443,7 @@ const SET = {
   coreKey: "6A",
   bpm: { start: 118, peak: 128, note: "Deep 118 opener rising through two peaks (Love Parade 128, then Oblivion), with an emotional wind-down." },
   vibes: ["Melodic House","Progressive","Anjunadeep Feel","Vocal Emotion","Deep Groove"],
-  pools: [ { name:"Beatport", available:25, total:25, color:"var(--cyan)" } ],
+  pools: [],
   djTips: [
     "<b>Merged set:</b> your 2nd Set (9) + Act 2 Instrumental (16, one duplicate Fractal collapsed) woven into one arc.",
     "<b>Peak 1:</b> Come Back Around → Trespass 06 → Love Parade (128) is the first crest.",
@@ -697,7 +692,7 @@ document.getElementById('transtips').innerHTML = [
 ].map((t,i)=>`<div class="t"><span class="n">${i+1}.</span><span>${t}</span></div>`).join('');
 
 /* pools */
-document.getElementById('pools').innerHTML = SET.pools.map(p=>{
+var __pl=document.getElementById('pools'); if(__pl) __pl.innerHTML = SET.pools.map(p=>{
   const pct=Math.round(p.available/p.total*100);
   return `<div class="pool"><div style="flex:1">
     <div style="display:flex;justify-content:space-between"><span class="nm">${p.name}</span><span class="av" style="color:${p.color}">${p.available} / ${p.total}</span></div>
