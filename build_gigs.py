@@ -54,6 +54,8 @@ def _str_field(src: str, key: str):
     # unescape common JS string escapes WITHOUT touching UTF-8 bytes
     val = re.sub(r'\\(["\\/])', r"\1", val)
     val = val.replace("\\n", " ").replace("\\t", " ")
+    # decode \uXXXX escapes (e.g. \u2014 em-dash, \u00b7 middot) so cards render real characters
+    val = re.sub(r'\\u([0-9a-fA-F]{4})', lambda m: chr(int(m.group(1),16)), val)
     return html.unescape(val).strip()
 
 
