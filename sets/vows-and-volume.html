@@ -4,25 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Vows &amp; Volume — Alpha Omega Collective</title>
-<!--
-  ============================================================================
-  DJ SET SHEET TEMPLATE
-  ----------------------------------------------------------------------------
-  HOW TO USE: Edit ONLY the `SET` object below. Everything else (table, energy
-  curve, Camelot wheel, harmonic guide, stat chips) renders automatically from
-  it. Do NOT hand-write table rows — add objects to SET.tracks instead.
-
-  RULES for the data you put in here (enforced by the skill workflow):
-   • Every track must be VERIFIED available on BPM Supreme AND Beatport before
-     it goes in this list. Reflect the counts in SET.pools.
-   • camelot must be a real Camelot code ("1A".."12B"). Musical key + similar
-     keys are computed from it automatically (standard Camelot wheel).
-   • bpm is an integer; energy is 1–10; phase is the phase id it belongs to.
-   • Mark the apex track of each peak with tag:"apex". Mark a specially
-     requested / signature track with tag:"pick".
-  ============================================================================
--->
-<meta name="theme-color" content="#0E0E10">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -333,6 +314,7 @@
   .ao-sh-back:hover{border-color:var(--cyan); color:var(--cyan)}
   @media (max-width:599px){ .ao-sh-sub{display:none} .ao-sh-name{font-size:12.5px} .ao-sh-back{padding:8px 10px} }
 </style>
+
 </head>
 <body>
 <div class="sheet">
@@ -440,36 +422,38 @@ const SET = {
   date: "2026-09-20",
   venue: "Base, M Resort Hotel",
   time: "11am – 1pm",
-  subtitle: "Three hours, 45 tracks \u2014 dinner at 103 BPM to the last dance at 128, never moving more than 5 BPM at a time",
-  totalLength: "3 Hours",
+  subtitle: "Just under four hours, 58 tracks \u2014 dinner at 103 BPM to the last dance at 128, never moving more than 5 BPM at a time",
+  totalLength: "4 Hours",
   coreKey: "2A",
-  bpm: { start: 103, peak: 130, note: "A single unbroken tempo ladder. Every transition moves 0\u20135 BPM, so drop-mixing stays locked from the first course to the last dance." },
-  vibes: ["Tropical House","Jackin House","Big Room","Nu-Disco","Love \u00b7 Happy \u00b7 Energetic","Clean Versions"],
+  bpm: { start: 103, peak: 130, note: "A single unbroken tempo ladder. All 57 transitions move 0\u20135 BPM, so drop-mixing stays locked from the first course to the last dance." },
+  vibes: ["Tropical House","Jackin House","Big Room","Nu-Disco","2010s Club Anthems","Clean Versions"],
   pools: [],
   djTips: [
-    "<b>The 12 you asked for:</b> 8 are on BPM Supreme and are in here. 4 aren't in the pool at all \u2014 Calvin Harris 'Summer', Pitbull 'Give Me Everything', Rick Astley and Cyndi Lauper. Each has a substitute marked \u2605 SUB, chosen to do the same job in the room.",
-    "<b>Drop mixing:</b> each track runs ~4 min (about half an extended mix). Cue the second drop, land on the 1, get out. Don't ride long blends \u2014 45 records in 3 hours means momentum.",
-    "<b>Three hard cuts, marked \u26a0 in the sheet:</b> #13 (1A\u219211B), #38 (2A\u21928A) and #40 (7A\u21928B) clash harmonically. Every other one of the 44 transitions is Camelot-clean. Cut on the drop at those three and nobody hears it.",
-    "<b>Peak 1 (#23) at 130:</b> Kosheen\u2019s vocal is the first real ceiling. #16 Celebration is the crowd spike that opens it \u2014 that's your cake-cutting / speeches-are-over record.",
-    "<b>The Breather (#24\u201328):</b> deliberately flat. This is when people sit, drink and talk. Don't fight it \u2014 #24 DREAMING and #26 Marea are built to be left alone.",
-    "<b>Peak 2 (#33\u201337):</b> the 2A block \u2014 Low, Lady In The Disco, We Found Love, On The Floor all sit in D\u266f Min. Harmonically the tightest run of the night; you can blend these long.",
-    "<b>The finale (#38\u201345) is almost all classics.</b> Once Boom Boom Pow lands, don't introduce anything unfamiliar \u2014 #39 Weekend is the only new record in there, and it's a breather.",
-    "<b>Four short cuts:</b> #4, #11, #17 and #28 exist only as radio-length versions \u2014 mix in early. A further ten are Intro Clean: also radio length, but they carry a beat-matched intro so they blend fine.",
-    "<b>Audition #43 Pump It Louder:</b> it's the 2026 Ti\u00ebsto remake (126 BPM \u2014 the 2005 original is 154 and unmixable here), but BPM Supreme only carries a Dirty Extended. Check it against your room."
+    "<b>13 tracks added from \u2018The Best of Times\u2019</b> \u2014 marked \u2605 PLAYLIST. Each was slotted where its BPM and Camelot key already fit, so nothing else in the set had to move.",
+    "<b>#36 Lean On and #39 Titanium were nearly missed.</b> Both were first reported unavailable \u2014 Lean On only appeared at 75\u2013100 BPM and Titanium under a different genre tag. Searching by genre (electro / progressive / bass house) surfaced full Clean Extended mixes at 128 and 126.",
+    "<b>Two from that playlist aren\u2019t on BPM Supreme at all:</b> Calvin Harris \u2018Summer\u2019 (covered by We Found Love at #44) and \u2018Feel So Close\u2019 \u2014 #53 is a 2026 mashup carrying that vocal instead.",
+    "<b>Already in the set before you asked:</b> On The Floor is #46 and DJ Got Us Fallin\u2019 In Love is #33.",
+    "<b>Drop mixing:</b> each track runs ~4 min (about half an extended mix). Cue the second drop, land on the 1, get out.",
+    "<b>Three hard cuts, marked \u26a0:</b> into #13 (1A\u219211B), #47 (2A\u21928A) and #50 (7A\u21928B). The other 54 transitions are Camelot-clean \u2014 none of the 13 additions introduced a clash.",
+    "<b>Peak One (#16\u201328) is 13 tracks</b> and runs Celebration \u2192 I Love It \u2192 a four-deep 4A block (Bad, Take You There, Animals, Stay The Night) \u2192 the 130 crest.",
+    "<b>Peak Two (#34\u201346) is now 13 tracks</b> with a five-deep 6A run \u2014 Ceremony, Glad You Came, Lean On, Save The World \u2014 then the 5A pair (Ever Since U Left Me, Titanium) before the 2A anthem block.",
+    "<b>The finale (#47\u201358) is twelve records, almost all classics,</b> closing Rule The World \u2192 Don\u2019t You Worry Child \u2192 Wake Me Up \u2192 I Gotta Feeling.",
+    "<b>Short cuts:</b> #4, #11, #18 and #33 are radio-length with no DJ intro \u2014 mix in early. #17 and #28 are Intro Clean, as are ten others.",
+    "<b>Audition #54 Pump It Louder:</b> BPM Supreme carries only a Dirty Extended. It is the one non-clean track in the set."
   ],
-  footnote: "Every track verified live against the BPM Supreme catalogue on 10 Sep 2026 \u2014 BPM, Camelot key and version read from the pool itself, and all 45 added to your Crate. Clean versions throughout except #43. 32 of the 45 were released in the last six months; the 13 marked \u2605 are your requested classics and their substitutes. Beatport was not cross-checked \u2014 this set was sourced from BPM Supreme only.",
+  footnote: "58 tracks, every one verified live against the BPM Supreme catalogue \u2014 BPM, Camelot key and version read from the pool itself. Clean versions throughout except #54. The 45 original tracks live in the BPM Supreme playlist \u2018Vows & Volume - Originals 45\u2019; the newest additions go to the download crate. Beatport was not cross-checked \u2014 this set was sourced from BPM Supreme only.",
   phases: [
     { id:1, name:"Golden Hour",       time:"0:00 \u2013 0:32", dur:"~32 min", color:"#7EE8D0", icon:"\u2600" },
     { id:2, name:"The Floor Opens",   time:"0:32 \u2013 1:00", dur:"~28 min", color:"#3E6BFF", icon:"\u2197" },
-    { id:3, name:"Peak One",          time:"1:00 \u2013 1:32", dur:"~32 min", color:"#FF2E9A", icon:"\u26f0" },
-    { id:4, name:"The Breather",      time:"1:32 \u2013 1:52", dur:"~20 min", color:"#7EE8D0", icon:"\u2601" },
-    { id:5, name:"Peak Two",          time:"1:52 \u2013 2:28", dur:"~36 min", color:"#FF5A2C", icon:"\u26f0" },
-    { id:6, name:"Last Dance",        time:"2:28 \u2013 3:00", dur:"~32 min", color:"#C6F000", icon:"\u26f0" }
+    { id:3, name:"Peak One",          time:"1:00 \u2013 1:52", dur:"~52 min", color:"#FF2E9A", icon:"\u26f0" },
+    { id:4, name:"The Breather",      time:"1:52 \u2013 2:12", dur:"~20 min", color:"#7EE8D0", icon:"\u2601" },
+    { id:5, name:"Peak Two",          time:"2:12 \u2013 3:04", dur:"~52 min", color:"#FF5A2C", icon:"\u26f0" },
+    { id:6, name:"Last Dance",        time:"3:04 \u2013 3:52", dur:"~48 min", color:"#C6F000", icon:"\u26f0" }
   ],
   tracks: [
     { n:1, song:"Baby Girl", artist:"Ally Brooke", camelot:"9A", bpm:103, energy:2, phase:1, role:"Tropical · Doors Open", tip:"Long intro — background warmth, let people arrive", tag:"" },
     { n:2, song:"Let's Get It Started", artist:"The Black Eyed Peas", camelot:"10A", bpm:105, energy:3, phase:1, role:"★ REQUEST · First Nod", tip:"First 'oh I know this' — keep it low, don't blow it early", tag:"pick" },
-    { n:3, song:"Stutter", artist:"Drea Dominique", camelot:"10B", bpm:108, energy:3, phase:1, role:"Pop \u00b7 Drift", tip:"\u26a0 Intro Clean \u2014 radio length, but the intro is beat-matched", tag:"" },
+    { n:3, song:"Stutter", artist:"Drea Dominique", camelot:"10B", bpm:108, energy:3, phase:1, role:"Pop · Drift", tip:"⚠ Intro Clean — radio length, but the intro is beat-matched", tag:"" },
     { n:4, song:"Middle (Alex Dynamix 2026 Edit)", artist:"DJ Snake ft Bipolar Sunshine", camelot:"11B", bpm:105, energy:3, phase:1, role:"Tropical · Familiar", tip:"⚠ Radio edit — mix in early", tag:"" },
     { n:5, song:"Sleepwalking", artist:"Jessie Altman", camelot:"12B", bpm:107, energy:4, phase:1, role:"Tropical · Lift", tip:"Intro Clean — beatmatched intro, easy blend", tag:"" },
     { n:6, song:"Wannabe (JPTheDJ ReDrum)", artist:"Spice Girls", camelot:"1B", bpm:110, energy:4, phase:1, role:"★ SUB for Cyndi Lauper · Singalong", tip:"ReDrum = DJ-friendly. First real crowd moment", tag:"pick" },
@@ -483,35 +467,48 @@ const SET = {
     { n:14, song:"Follow Me", artist:"Vice & Aloe Blacc", camelot:"11A", bpm:120, energy:6, phase:2, role:"Dance-Pop · Recover", tip:"Filter in", tag:"" },
     { n:15, song:"Ask Me Again (FRNKROK Deep House Remix)", artist:"Joei Mae", camelot:"12A", bpm:122, energy:7, phase:2, role:"Deep House · Doorway", tip:"Percussion in — Peak One starts here", tag:"" },
     { n:16, song:"Celebration (Cesar Castilla Melody Intro)", artist:"Kool & the Gang", camelot:"1A", bpm:122, energy:8.5, phase:3, role:"★ THE wedding record · Crowd Spike", tip:"Melody intro is built for this. Hands in the air", tag:"pick" },
-    { n:17, song:"Family Affair (Dance For Me) (DJ Nasa Jump Off Edit)", artist:"David Guetta", camelot:"1A", bpm:124, energy:7.5, phase:3, role:"Jackin House · Reset the groove", tip:"Drop mix on the 1", tag:"" },
-    { n:18, song:"Shine", artist:"Play-N-Skillz & Pink Sweat$", camelot:"2A", bpm:125, energy:8, phase:3, role:"Dance-Pop · Roll", tip:"Long blend, hold the groove", tag:"" },
-    { n:19, song:"Westside", artist:"Tony Dark Eyes & Drumboi", camelot:"3A", bpm:124, energy:8, phase:3, role:"Tech House · Bounce", tip:"Bass swap", tag:"" },
-    { n:20, song:"Movin' To The Sun", artist:"HUGEL, Imael Angel & Ultra Nate", camelot:"4A", bpm:125, energy:8.5, phase:3, role:"Jackin House · Vocal Lift", tip:"Vocal over the outro — big room energy building", tag:"" },
-    { n:21, song:"Don't Wanna Go Home (ALANDRIA Remix)", artist:"Meduza ft Henry Camamile", camelot:"4A", bpm:128, energy:9, phase:3, role:"Prog House · Push", tip:"Drop mix, tight 16", tag:"" },
-    { n:22, song:"Take You There", artist:"Odd Mob, OMNOM & HYPERBEAM", camelot:"4A", bpm:128, energy:9, phase:3, role:"Tech House · Drive", tip:"Loop transition", tag:"" },
-    { n:23, song:"Hide U (ALANDRIA Remix)", artist:"Kosheen & Tinlicker", camelot:"5A", bpm:130, energy:9.5, phase:3, role:"Prog House · PEAK ONE CREST", tip:"Big English vocal, full extended mix — let it fly", tag:"apex" },
-    { n:24, song:"DREAMING", artist:"ZHANGYE & Skylar Grey", camelot:"5A", bpm:128, energy:6.5, phase:4, role:"Prog House · Pull-Back", tip:"Long melodic breakdown — let the room breathe", tag:"" },
-    { n:25, song:"Quiet Storm", artist:"VASSY & DJ Serafin", camelot:"5A", bpm:125, energy:6, phase:4, role:"House · Breathe", tip:"Blend / atmosphere", tag:"" },
-    { n:26, song:"Marea (we've lost dancing)", artist:"Fred again.. & The Blessed Madonna", camelot:"4A", bpm:123, energy:5.5, phase:4, role:"House · The Reset", tip:"Let it play — this is the moment people talk and refill", tag:"" },
-    { n:27, song:"Sauna (Horse Meat Disco Remix)", artist:"Jessie Ware", camelot:"5A", bpm:122, energy:6, phase:4, role:"Nu-Disco · Regroup", tip:"EQ in, low pass", tag:"" },
-    { n:28, song:"DJ Got Us Fallin' In Love (BPM Supreme Edit)", artist:"Usher ft Pitbull vs DJ Snake", camelot:"6A", bpm:120, energy:7.5, phase:4, role:"★ REQUEST · Re-Ignition", tip:"⚠ Radio length + key sits alone — cut hard, don't blend", tag:"pick" },
-    { n:29, song:"Ceremony", artist:"Eli & Fur", camelot:"6A", bpm:124, energy:7, phase:5, role:"Prog House · Climb", tip:"Build in — Peak Two proper starts here", tag:"" },
-    { n:30, song:"Ever Since U Left Me (Alvin Anthony Remix)", artist:"French Montana & Max B", camelot:"5A", bpm:124, energy:7.5, phase:5, role:"Bass House · Momentum", tip:"Drop mix", tag:"" },
-    { n:31, song:"Movin' To The Sun (Kue's Studio 54 Mix)", artist:"HUGEL, Imael Angel & Ultra Nate", camelot:"4A", bpm:125, energy:8, phase:5, role:"Disco House · Familiar Return", tip:"Same hook as #20, disco flip — reads as a callback", tag:"" },
-    { n:32, song:"Cola (Mister Gray Edit)", artist:"CamelPhat & Elderbrook vs James Hype", camelot:"3A", bpm:130, energy:8.5, phase:5, role:"Prog House · Gear Up", tip:"Drop mix — you're at 130 now", tag:"" },
-    { n:33, song:"Low", artist:"Flo Rida ft T-Pain", camelot:"2A", bpm:128, energy:9, phase:5, role:"★ REQUEST · Floor Filler", tip:"Intro Clean has a beatmatched intro — blend it in", tag:"pick" },
-    { n:34, song:"Lady In The Disco", artist:"Kue vs Modjo", camelot:"2A", bpm:128, energy:9, phase:5, role:"Disco House · Bridge", tip:"Modjo hook — keeps the classics running", tag:"" },
-    { n:35, song:"We Found Love", artist:"Rihanna ft Calvin Harris", camelot:"2A", bpm:128, energy:9.5, phase:5, role:"★ SUB for Calvin Harris 'Summer' · Anthem", tip:"Long breakdown — biggest singalong of Peak Two", tag:"pick" },
-    { n:36, song:"Control", artist:"Afrojack, Lucas & Steve", camelot:"1A", bpm:130, energy:9.5, phase:5, role:"Big Room · Sustain", tip:"Loop / re-intro", tag:"" },
-    { n:37, song:"On The Floor", artist:"Jennifer Lopez ft Pitbull", camelot:"2A", bpm:130, energy:9.8, phase:5, role:"★ REQUEST · PEAK TWO CREST", tip:"Let it fly", tag:"apex" },
-    { n:38, song:"Boom Boom Pow", artist:"Black Eyed Peas", camelot:"8A", bpm:130, energy:9.8, phase:6, role:"★ REQUEST · Finale Opens", tip:"⚠ Key jump 2A→8A — hard cut on the drop, no blend", tag:"pick" },
-    { n:39, song:"Weekend", artist:"MEDUZA & Khalid", camelot:"7A", bpm:130, energy:9.5, phase:6, role:"Prog House · Breather at full tilt", tip:"Vocal in — the only new record in the finale", tag:"" },
-    { n:40, song:"2 The Moon (Chorus In)", artist:"Pitbull, Ne-Yo & AFROJACK ft DJ Buddha", camelot:"8B", bpm:126, energy:9.5, phase:6, role:"★ SUB for 'Give Me Everything' · Same crew", tip:"⚠ Key 7A→8B — cut, don't blend", tag:"pick" },
-    { n:41, song:"Sexy Chick", artist:"David Guetta ft Akon", camelot:"9B", bpm:130, energy:9.8, phase:6, role:"★ REQUEST · Clean version", tip:"Titled 'Sexy Chick' = the clean edit. Drop mix", tag:"pick" },
-    { n:42, song:"Free Your Mind (Lai On Da Track & DCR MILDA Edit)", artist:"Prospa, Cloonee & Sybil", camelot:"9A", bpm:130, energy:9.8, phase:6, role:"House · Hold the ceiling", tip:"Loop transition", tag:"" },
-    { n:43, song:"Pump It Louder", artist:"Tiësto & Black Eyed Peas", camelot:"9A", bpm:126, energy:9.8, phase:6, role:"★ REQUEST · 2026 remake", tip:"⚠ Dirty Extended only — audition before the day", tag:"pick" },
-    { n:44, song:"Rule The World (Everybody)", artist:"Tiesto, Tears For Fears, NIIKO X SWAE", camelot:"10A", bpm:128, energy:9.5, phase:6, role:"House · Set up the closer", tip:"Long blend into the last record", tag:"" },
-    { n:45, song:"I Gotta Feeling", artist:"The Black Eyed Peas", camelot:"9A", bpm:128, energy:10, phase:6, role:"★ REQUEST · LAST DANCE", tip:"'Tonight's gonna be a good night.' Let it run full", tag:"apex" }
+    { n:17, song:"I Love It", artist:"Icona Pop ft Charli XCX", camelot:"1A", bpm:126, energy:8.5, phase:3, role:"★ PLAYLIST · Crowd Spike", tip:"⚠ Intro Clean — radio length. Straight after Celebration, keep the hands up", tag:"pick" },
+    { n:18, song:"Family Affair (Dance For Me) (DJ Nasa Jump Off Edit)", artist:"David Guetta", camelot:"1A", bpm:124, energy:7.5, phase:3, role:"Jackin House · Reset the groove", tip:"Drop mix on the 1", tag:"" },
+    { n:19, song:"Shine", artist:"Play-N-Skillz & Pink Sweat$", camelot:"2A", bpm:125, energy:8, phase:3, role:"Dance-Pop · Roll", tip:"Long blend, hold the groove", tag:"" },
+    { n:20, song:"Westside", artist:"Tony Dark Eyes & Drumboi", camelot:"3A", bpm:124, energy:8, phase:3, role:"Tech House · Bounce", tip:"Bass swap", tag:"" },
+    { n:21, song:"Movin' To The Sun", artist:"HUGEL, Imael Angel & Ultra Nate", camelot:"4A", bpm:125, energy:8.5, phase:3, role:"Jackin House · Vocal Lift", tip:"Vocal over the outro — big room energy building", tag:"" },
+    { n:22, song:"Don't Wanna Go Home (ALANDRIA Remix)", artist:"Meduza ft Henry Camamile", camelot:"4A", bpm:128, energy:9, phase:3, role:"Prog House · Push", tip:"Drop mix, tight 16", tag:"" },
+    { n:23, song:"Bad", artist:"David Guetta & Showtek ft Vassy", camelot:"4A", bpm:128, energy:9, phase:3, role:"★ PLAYLIST · Big Room", tip:"Same BPM and key as the track before — drop mix on the 1", tag:"" },
+    { n:24, song:"Take You There", artist:"Odd Mob, OMNOM & HYPERBEAM", camelot:"4A", bpm:128, energy:9, phase:3, role:"Tech House · Drive", tip:"Loop transition", tag:"" },
+    { n:25, song:"Animals", artist:"Martin Garrix", camelot:"4A", bpm:128, energy:9.2, phase:3, role:"★ PLAYLIST · The Drop Everyone Knows", tip:"Let the build run full — do not talk over it", tag:"pick" },
+    { n:26, song:"Stay The Night (Cool Bros All Night Bootleg)", artist:"Zedd ft Hayley Williams", camelot:"4A", bpm:130, energy:9.3, phase:3, role:"★ PLAYLIST · Lift to 130", tip:"Vocal in over the outro — sets up the crest", tag:"" },
+    { n:27, song:"Hide U (ALANDRIA Remix)", artist:"Kosheen & Tinlicker", camelot:"5A", bpm:130, energy:9.5, phase:3, role:"Prog House · PEAK ONE CREST", tip:"Big English vocal, full extended mix — let it fly", tag:"apex" },
+    { n:28, song:"Where Them Girls At", artist:"David Guetta, Flo Rida & Nicki Minaj", camelot:"5B", bpm:130, energy:9.3, phase:3, role:"★ PLAYLIST · Hold the ceiling", tip:"⚠ Intro Clean — radio length. 5A→5B is a clean swap, blend it", tag:"" },
+    { n:29, song:"DREAMING", artist:"ZHANGYE & Skylar Grey", camelot:"5A", bpm:128, energy:6.5, phase:4, role:"Prog House · Pull-Back", tip:"Long melodic breakdown — let the room breathe", tag:"" },
+    { n:30, song:"Quiet Storm", artist:"VASSY & DJ Serafin", camelot:"5A", bpm:125, energy:6, phase:4, role:"House · Breathe", tip:"Blend / atmosphere", tag:"" },
+    { n:31, song:"Marea (we've lost dancing)", artist:"Fred again.. & The Blessed Madonna", camelot:"4A", bpm:123, energy:5.5, phase:4, role:"House · The Reset", tip:"Let it play — this is the moment people talk and refill", tag:"" },
+    { n:32, song:"Sauna (Horse Meat Disco Remix)", artist:"Jessie Ware", camelot:"5A", bpm:122, energy:6, phase:4, role:"Nu-Disco · Regroup", tip:"EQ in, low pass", tag:"" },
+    { n:33, song:"DJ Got Us Fallin' In Love (BPM Supreme Edit)", artist:"Usher ft Pitbull vs DJ Snake", camelot:"6A", bpm:120, energy:7.5, phase:4, role:"★ REQUEST · Re-Ignition", tip:"⚠ Radio length + key sits alone — cut hard, don't blend", tag:"pick" },
+    { n:34, song:"Ceremony", artist:"Eli & Fur", camelot:"6A", bpm:124, energy:7, phase:5, role:"Prog House · Climb", tip:"Build in — Peak Two proper starts here", tag:"" },
+    { n:35, song:"Glad You Came (Martial Simon Remix)", artist:"The Wanted", camelot:"6A", bpm:128, energy:7.5, phase:5, role:"★ PLAYLIST · Re-Ignition", tip:"Big singalong to relaunch Peak Two", tag:"pick" },
+    { n:36, song:"Lean On (Mister Gray 'Losing It' Edit)", artist:"Major Lazer, DJ Snake & MØ vs Fisher", camelot:"6A", bpm:128, energy:8.2, phase:5, role:"★ PLAYLIST · Bass-House Roll", tip:"Same 128/6A as Glad You Came — blend it long", tag:"" },
+    { n:37, song:"Save The World (Cheyenne Giles Remix)", artist:"Swedish House Mafia", camelot:"6A", bpm:126, energy:8, phase:5, role:"★ PLAYLIST · Anthem", tip:"Long breakdown — the SHM hands-in-the-air moment", tag:"" },
+    { n:38, song:"Ever Since U Left Me (Alvin Anthony Remix)", artist:"French Montana & Max B", camelot:"5A", bpm:124, energy:7.5, phase:5, role:"Bass House · Momentum", tip:"Drop mix", tag:"" },
+    { n:39, song:"Titanium (Julien Creance Remix)", artist:"David Guetta ft Sia", camelot:"5A", bpm:126, energy:8.4, phase:5, role:"★ PLAYLIST · Prog-House Singalong", tip:"Huge Sia vocal — the breakdown is the moment", tag:"pick" },
+    { n:40, song:"Movin' To The Sun (Kue's Studio 54 Mix)", artist:"HUGEL, Imael Angel & Ultra Nate", camelot:"4A", bpm:125, energy:8, phase:5, role:"Disco House · Familiar Return", tip:"Same hook as #20, disco flip — reads as a callback", tag:"" },
+    { n:41, song:"Cola (Mister Gray Edit)", artist:"CamelPhat & Elderbrook vs James Hype", camelot:"3A", bpm:130, energy:8.5, phase:5, role:"Prog House · Gear Up", tip:"Drop mix — you're at 130 now", tag:"" },
+    { n:42, song:"Low", artist:"Flo Rida ft T-Pain", camelot:"2A", bpm:128, energy:9, phase:5, role:"★ REQUEST · Floor Filler", tip:"Intro Clean has a beatmatched intro — blend it in", tag:"pick" },
+    { n:43, song:"Lady In The Disco", artist:"Kue vs Modjo", camelot:"2A", bpm:128, energy:9, phase:5, role:"Disco House · Bridge", tip:"Modjo hook — keeps the classics running", tag:"" },
+    { n:44, song:"We Found Love", artist:"Rihanna ft Calvin Harris", camelot:"2A", bpm:128, energy:9.5, phase:5, role:"★ SUB for Calvin Harris 'Summer' · Anthem", tip:"Long breakdown — biggest singalong of Peak Two", tag:"pick" },
+    { n:45, song:"Control", artist:"Afrojack, Lucas & Steve", camelot:"1A", bpm:130, energy:9.5, phase:5, role:"Big Room · Sustain", tip:"Loop / re-intro", tag:"" },
+    { n:46, song:"On The Floor", artist:"Jennifer Lopez ft Pitbull", camelot:"2A", bpm:130, energy:9.8, phase:5, role:"★ REQUEST · PEAK TWO CREST", tip:"Let it fly", tag:"apex" },
+    { n:47, song:"Boom Boom Pow", artist:"Black Eyed Peas", camelot:"8A", bpm:130, energy:9.8, phase:6, role:"★ REQUEST · Finale Opens", tip:"⚠ Key jump 2A→8A — hard cut on the drop, no blend", tag:"pick" },
+    { n:48, song:"Club Can't Handle Me (DJDX Edit)", artist:"Flo Rida ft David Guetta", camelot:"8A", bpm:128, energy:9.6, phase:6, role:"★ PLAYLIST · Finale Roll", tip:"Lands straight after Boom Boom Pow, same key — blend it", tag:"" },
+    { n:49, song:"Weekend", artist:"MEDUZA & Khalid", camelot:"7A", bpm:130, energy:9.5, phase:6, role:"Prog House · Breather at full tilt", tip:"Vocal in — the only new record in the finale", tag:"" },
+    { n:50, song:"2 The Moon (Chorus In)", artist:"Pitbull, Ne-Yo & AFROJACK ft DJ Buddha", camelot:"8B", bpm:126, energy:9.5, phase:6, role:"★ SUB for 'Give Me Everything' · Same crew", tip:"⚠ Key 7A→8B — cut, don't blend", tag:"pick" },
+    { n:51, song:"Sexy Chick", artist:"David Guetta ft Akon", camelot:"9B", bpm:130, energy:9.8, phase:6, role:"★ REQUEST · Clean version", tip:"Titled 'Sexy Chick' = the clean edit. Drop mix", tag:"pick" },
+    { n:52, song:"Free Your Mind (Lai On Da Track & DCR MILDA Edit)", artist:"Prospa, Cloonee & Sybil", camelot:"9A", bpm:130, energy:9.8, phase:6, role:"House · Hold the ceiling", tip:"Loop transition", tag:"" },
+    { n:53, song:"Where You Are (Mister Gray 'Feel So Close' Mashup)", artist:"John Summit & Hayla vs Calvin Harris", camelot:"9A", bpm:128, energy:9.8, phase:6, role:"★ PLAYLIST (sub) · Feel So Close hook", tip:"Carries the Feel So Close vocal over a 2026 house record", tag:"pick" },
+    { n:54, song:"Pump It Louder", artist:"Tiësto & Black Eyed Peas", camelot:"9A", bpm:126, energy:9.8, phase:6, role:"★ REQUEST · 2026 remake", tip:"⚠ Dirty Extended only — audition before the day", tag:"pick" },
+    { n:55, song:"Rule The World (Everybody)", artist:"Tiesto, Tears For Fears, NIIKO X SWAE", camelot:"10A", bpm:128, energy:9.5, phase:6, role:"House · Set up the closer", tip:"Long blend into the last record", tag:"" },
+    { n:56, song:"Don't You Worry Child (BPM Supreme Bootleg)", artist:"Swedish House Mafia", camelot:"10A", bpm:126, energy:9.6, phase:6, role:"★ PLAYLIST · Penultimate Anthem", tip:"The whole room sings this — hold it", tag:"pick" },
+    { n:57, song:"Wake Me Up", artist:"Avicii ft Aloe Blacc", camelot:"10A", bpm:124, energy:9.4, phase:6, role:"★ PLAYLIST · Set up the closer", tip:"Drops the tempo 4 BPM to make the last record feel bigger", tag:"pick" },
+    { n:58, song:"I Gotta Feeling", artist:"The Black Eyed Peas", camelot:"9A", bpm:128, energy:10, phase:6, role:"★ REQUEST · LAST DANCE", tip:"'Tonight's gonna be a good night.' Let it run full", tag:"apex" }
   ]
 };
 
@@ -866,5 +863,7 @@ function listenCtrls(t, compact){
   el.innerHTML=p.join('');
 })();
 </script>
+
+</body></html>
 </body>
 </html>
